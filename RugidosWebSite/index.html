@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Hacemos de tu evento una verdadera FIESTA!! Salón de fiestas para cumples hasta 8 años. Animación, fútbol, disco, pelotero, juegos, personajes en vivo, espejo mágico y mucho más! ...Rugidos Fiestas Tandil..."
+    />
+    <meta name="author" content="Rugidos Fiestas Tandil" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../css/img/rugidosfiestas_icon.ico" />
+    <link rel="stylesheet" href="../css/normalize.css" as="style" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script defer src="../javascript/animation-website.js"></script>
+    <title>Rugidos Fiestas Tandil</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="#inicio">
+          <img
+            class="navbar__logo"
+            src="../css/img/logo_rugidos_nav.png"
+            alt="logo_rugidos_nav"
+          />
+        </a>
+        <ul class="navbar__menu">
+          <li class="nav-item">
+            <a class="nav-link" href="#inicio">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#galeria_fotos">Galeria de fotos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#servicios">Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#extras">Adicionales</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ubicacion">Ubicación</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+    <main class="main-container">
+      <section id="inicio">
+        <img
+          class="hidden inicio__logo"
+          src="../css/img/logo_rugidos.png"
+          alt="logo_rugidos"
+        />
+        <h2 class="hidden inicio__subtitle">
+          Hacemos de tu evento una verdadera fiesta!
+        </h2>
+        <div class="inicio__redes_container">
+          <a
+            href="https://www.instagram.com/rugidosfiestas.tandil/"
+            target="_blank"
+            ><img src="../css/img/logo_instagram.png" alt="Instagram_Logo"
+          /></a>
+          <a
+            href="https://www.facebook.com/rugidosfiestas.tandil/"
+            target="_blank"
+            ><img src="../css/img/logo_facebook.png" alt="Facebook_Logo"
+          /></a>
+          <a
+            href="https://api.whatsapp.com/send?phone=5492494306222&text=Enviale un WhatsApp a Rugidos Fiestas!."
+            target="_blank"
+            ><img src="../css/img/logo_whatsapp.png" alt="WhatsApp_Logo"
+          /></a>
+          <a href="#ubicacion" class="inicio__logo_location"
+            ><img src="../css/img/logo_location.png" alt="Location_Logo"
+          /></a>
+        </div>
+      </section>
+
+      <section id="galeria_fotos">
+        <div class="galeria_fotos__container">
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/1.JPG"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/2.JPG"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/3.jpg"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/4.JPG"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/5.JPG"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/6.JPG"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/7.JPG"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/8.JPG"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/9.JPG"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/10.jpg"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/11.JPG"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/12.JPG"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/13.jpg"
+          />
+          <img
+            class="galeria_fotos__slides animate"
+            src="../css/img/carrusel/14.jpg"
+          />
+          <a class="prev" onclick="prevSlide()">&#10094;</a>
+          <a class="next" onclick="nextSlide()">&#10095;</a>
+          <div class="galeria_fotos__dots_container"></div>
+          <!-- Los dots se generan automaticamente con Javascript segun la cantidad de fotos -->
+        </div>
+        <div class="galeria_fotos__mensaje">
+          <span>Más fotos en:</span>
+          <a
+            href="https://www.instagram.com/rugidosfiestas.tandil/"
+            target="_blank"
+            ><img src="../css/img/logo_instagram.png" alt="Instagram_Logo"
+          /></a>
+        </div>
+      </section>
+
+      <section id="servicios">
+        <div class="servicios__datos_importantes">
+          <ul>
+            <li>Cumpleaños hasta 8 años</li>
+            <li>Capacidad máx 30 chicos y 25 adultos</li>
+            <li>Con tu seña se congela el precio del básico</li>
+          </ul>
+        </div>
+        <div class="servicios__cont">
+          <div class="hidden servicios__cont__serv">
+            <h1>Servicios incluidos:</h1>
+            <ul>
+              <li>
+                Juegos libres, coordinación y animación profesional acorde a
+                cada edad
+              </li>
+              <li>Invitaciones virtuales animadas personalizadas</li>
+              <li>Servicio de emergencias médicas</li>
+              <li>Proyecciones en pantalla gigante</li>
+              <li>Mantelería, vajilla y servilletas</li>
+              <li>Jugo libre para los niños</li>
+              <li>Estructura de la piñata</li>
+              <li>Atención de mesas</li>
+            </ul>
+          </div>
+          <div class="hidden servicios__cont__inst">
+            <h1>Instalaciones:</h1>
+            <ul>
+              <li>
+                Plaza blanda con pelotero para los más chiquitos, autos,
+                subibaja, tobogán, etc
+              </li>
+              <li>
+                Rincones de juego simbólico: mercadito, casita, autos, estación
+                de servicio, etc
+              </li>
+              <li>
+                Laberinto con pelotero en 2 niveles con tirolesa, puente
+                colgante, trepadora
+              </li>
+              <li>
+                Cancha de fútbol de 90m² de césped sintético y aro de básquet
+              </li>
+              <li>
+                Disco con luces audiorítmicas, esferas espejadas, luz negra
+              </li>
+              <li>Espacio para adultos con sector de living</li>
+              <li>Calefacción y aire acondicionado</li>
+              <li>Proyector y pantalla gigante</li>
+              <li>Inflable con tobogán</li>
+              <li>Tejo de aire</li>
+              <li>Ping pong</li>
+              <li>Metegol</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="extras">
+        <div class="extras__container active">
+          <div class="extras__container__video">
+            <iframe
+              src="https://youtube.com/embed/Yyd3bLa3KKg?feature=share&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>Rugibot (Show de robot led)</h1>
+            <p>
+              Presencia de nuestro exclusivo y luminoso “Rugibot” con coreos y
+              juegos durante el momento del baile.
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__container">
+          <div class="extras__container__video">
+            <iframe
+              src="https://www.youtube.com/embed/oVy4IBQr1_M?si=4YxR7Sec8GtOht7t&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>Show Personajes en Vivo</h1>
+            <p>
+              Contamos con personajes propios Mickey, Sapo Pepe, Marshall de Paw
+              Patrol y Tigger. Todos ellos bailan, juegan y se sacan fotos con
+              los invitados.
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__container">
+          <div class="extras__container__video">
+            <iframe
+              src="https://www.youtube.com/embed/f9m7GY5G0h0?si=4SRsQHfZYaKk71b6&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>Mesas de Candy Bar</h1>
+            <p>
+              Te ofrecemos las mesas, diferentes bandejas y accesorios para que
+              armes tu Candy Bar. Incluye también cartel tipo Hollywood con el
+              nombre y edad.
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__container">
+          <div class="extras__container__video">
+            <iframe
+              src="https://www.youtube.com/embed/7Wgu2PiotZE?si=95J-oLMcGbR8h-rb&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>Maquillaje Artístico</h1>
+            <p>
+              Maquillaje para niños con diversos diseños con pinturas faciales
+              no tóxicas y fácilmente lavables.
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__container">
+          <div class="extras__container__video">
+            <iframe
+              src="https://www.youtube.com/embed/VDfmlZX-_ho?si=LQffXCvXEAjJmRkg&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>Espejo Mágico</h1>
+            <p>
+              Nuestra exclusiva cabina fotográfica, con forma de espejo de gran
+              tamaño, cuenta con una pantalla táctil para iniciar la sesión de
+              fotos. Al finalizar, te invitamos a firmar la tira de fotos creada
+              y personalizarla con el color que elijas, o escribir un mensaje y
+              agregar emoticones, entre otras opciones. Disponemos de una amplia
+              variedad de accesorios, sombreros y carteles para que puedas dar
+              rienda suelta a tu creatividad, y una vez que te posiciones en la
+              alfombra roja, ¡captura las fotos más divertidas! Después del
+              evento, te enviamos las fotos y las tiras en formato digital, las
+              cuales se convierten en un hermoso recuerdo. ¡Tanto niños como
+              adultos de todas las edades pueden disfrutarlo!
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__container">
+          <div class="extras__container__video">
+            <iframe
+              src="https://www.youtube.com/embed/I9oUtVtXZUk?si=c1qgA_4nZuEbA1YC&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>Fiesta Flúor</h1>
+            <p>
+              La primera y original Fiesta Flúor de Tandil! Incluye mantelería,
+              vasos y decoración flúor y durante el momento del baile vinchas y
+              maquillaje neón para todos los chicos.
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__container">
+          <div class="extras__container__video">
+            <iframe
+              src="https://www.youtube.com/embed/N9NPTH4JheQ?si=KJdZgnQ8I1Ryt-rN&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>Show del Pancho</h1>
+            <p>
+              Presentación del cumpleañero caracterizado de cocinero quién sirve
+              los panchos en nuestra panchería. (Incluye aderezos)
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__container">
+          <div class="extras__container__video">
+            <iframe
+              src="https://www.youtube.com/embed/GzjWgtbhOmo?si=QrBERyyjJxwG0sSJ&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>Rincón Fashion</h1>
+            <p>
+              En nuestro “Rincón Fashion” vas a encontrar: glitter bar,
+              maquillaje y strass para rostro, peinados divertidos y pinturas
+              para pelo. Para nenas y nenes!!!
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__container">
+          <div class="extras__container__video">
+            <iframe
+              src="https://youtube.com/embed/9brdEWX2XAE?feature=share&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>Barra de Jugos</h1>
+            <p>
+              Jugos libres de diferentes sabores servidos en nuestra barra
+              caribeña en vasos con sorbetes
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__container">
+          <div class="extras__container__video">
+            <iframe
+              src="https://youtube.com/embed/K6ouZqYp85M?feature=share&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>RugiTattoo Point</h1>
+            <p>
+              Tatuajes de glitter temporales, duran hasta 3 o 4 días, diferentes
+              diseños. Última novedad para tu evento!
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__container">
+          <div class="extras__container__video">
+            <iframe
+              src="https://www.youtube.com/embed/VU_dHpVvqko?si=S0U2j1Ekdq8IFlZm&enablejsapi=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="extras__container__info">
+            <h1>Pochoclos</h1>
+            <p>
+              Bolsitas de pochoclos como souvenir. La mejor y más rica solución
+              para entregar a los invitados de regalo al finalizar el cumple.
+            </p>
+          </div>
+        </div>
+
+        <div class="extras__slider_container" id="extras__slider_container">
+          <div id="pagination"></div>
+          <!-- Se agregan los dots correspondientes a la cantidad de extras__container con JS -->
+          <div id="extras__buttons">
+            <div class="btn_left" id="btn_left">
+              <i class="bx bx-chevron-left"></i>
+            </div>
+            <div class="btn_right" id="btn_right">
+              <i class="bx bx-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ubicacion">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1885.840690270508!2d-59.13009226601645!3d-37.35213485116404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95911ffb97883791%3A0xe7150ee59058435b!2sRUGIDOS%20FIESTAS!5e0!3m2!1ses-419!2sar!4v1692346324963!5m2!1ses-419!2sar"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+        </iframe>
+      </section>
+
+      <section id="footer">
+        <img class="footer__logo" src="../css/img/logo_rugidos_blanco.png" />
+        <div class="footer__redes_container">
+          <a
+            href="https://www.instagram.com/rugidosfiestas.tandil/"
+            target="_blank"
+            ><img src="../css/img/logo_instagram.png" alt="Instagram_Logo"
+          /></a>
+          <a
+            href="https://www.facebook.com/rugidosfiestas.tandil/"
+            target="_blank"
+            ><img src="../css/img/logo_facebook.png" alt="Facebook_Logo"
+          /></a>
+          <a
+            href="https://api.whatsapp.com/send?phone=5492494306222&text=Enviale un WhatsApp a Rugidos Fiestas!."
+            target="_blank"
+            ><img src="../css/img/logo_whatsapp.png" alt="WhatsApp_Logo"
+          /></a>
+          <a href="#ubicacion" class="inicio__logo_location"
+            ><img src="../css/img/logo_location.png" alt="Location_Logo"
+          /></a>
+        </div>
+        <span class="footer__phone"
+          ><img src="../css/img/logo_phone.png" alt="logo_phone" />
+          2494306222</span
+        >
+        <span
+          >Dr. Osvaldo Zarini 1538 <br />
+          (Rotonda del lago) <br />
+          Tandil
+        </span>
+      </section>
+    </main>
+    <a
+      href="https://api.whatsapp.com/send?phone=5492494306222&text=Enviale un WhatsApp a Rugidos Fiestas!."
+      target="_blank"
+    >
+      <img
+        class="wsp_logo"
+        src="../css/img/logo_whatsapp.png"
+        alt="WhatsApp_Logo"
+      />
+    </a>
+    <!-- WhatsApp Widget -->
+    <script src="../javascript/galeria_fotos.js"></script>
+  </body>
+</html>
