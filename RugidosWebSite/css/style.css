@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  background-color: #fbf9e5;
+  background: linear-gradient(135deg, #ffe6fa, #e2a3d3, #60047a);
 }
 
 /* Scroll 100dvh */
@@ -224,7 +224,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100dvh;
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #f3f3f3, #d8bfd8, #60047a);
 }
 
 .galeria_fotos__mensaje {
@@ -328,7 +328,7 @@ body {
 
 /* Servicios */
 #servicios {
-  background-color: #fbf9e5;
+  
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
@@ -408,7 +408,7 @@ body {
 
 /* Extras */
 #extras {
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #f3f3f3, #d8bfd8, #60047a);
   height: 100dvh;
   display: flex;
   flex-direction: column;
