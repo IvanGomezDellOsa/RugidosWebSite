@@ -75,6 +75,9 @@ body {
   border: solid 0.2rem black;
   border-radius: 35%;
   padding: 0.4rem;
+  display: inline-block;
+  transform: rotate(-8deg);
+  transition: transform 0.3s ease;
 }
 
 .nav-link:hover {
