@@ -18,8 +18,9 @@ body {
 
 /* Scroll 100dvh */
 #inicio,
-#galeria_fotos,
 #servicios,
+#instagram,
+#galeria_fotos,
 #ubicacion,
 #extras,
 #footer {
@@ -215,6 +216,21 @@ body {
   opacity: 1;
 }
 /* Inicio */
+
+/*Instagram */
+#instagram{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  padding-top: 5dvh;
+}
+
+#instagram a[href*="elfsight.com/instagram-feed-instashow"] {
+  filter: opacity(0) !important;
+}
+
+/*Instagram */
 
 /* Galeria de fotos */
 #galeria_fotos {
@@ -485,7 +501,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 
 #extras__buttons {
@@ -495,7 +511,7 @@ body {
 
 .btn_left,
 .btn_right {
-  font-size: 3rem;
+  font-size: 5rem;
   margin: 1rem;
 }
 
@@ -509,6 +525,7 @@ body {
 
 .bx.bx-circle.bx-fade-up.bx-flip-vertical {
   color: #60047a;
+  font-size: 1.5rem;
 }
 /* Extras */
 
