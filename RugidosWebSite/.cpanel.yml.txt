@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/rugidosf/public_html/
+    - /bin/cp -r . $DEPLOYPATH
+    - /bin/rm -f $DEPLOYPATH/.cpanel.yml
