@@ -17,19 +17,20 @@ body {
 }
 
 /* Scroll 100dvh */
-#inicio,
+/* #inicio,
 #servicios,
 #instagram,
 #galeria_fotos,
 #ubicacion,
-#extras,
+#extras, #google,
 #footer {
-    scroll-snap-align: start;
-}
+    scroll-snap-align: center;
+    scroll-snap-type: y proximity;
+} */
 
 .main-container {
     scroll-snap-type: y mandatory;
-    height: 100vh;
+    height: 100dvh;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -73,11 +74,11 @@ body {
 
 .nav-link.show {
     color: #60047a;
-    border: solid 0.2rem black;
+    border: solid 0.2rem #383838;
     border-radius: 35%;
     padding: 0.4rem;
     display: inline-block;
-    transform: rotate(-8deg);
+    transform: rotate(-360deg);
     transition: transform 0.3s ease;
 }
 
@@ -121,10 +122,10 @@ body {
         position: fixed;
         left: -100%;
         top: 5rem;
-        height: 72%;
+        height: 100%;
         flex-direction: column;
         background-color: #262626;
-        width: 100%;
+        width: 100vw;
         text-align: center;
         transition: 0.3s;
         z-index: 9999;
@@ -132,7 +133,7 @@ body {
     }
 
     .nav-item {
-        margin: 1rem 0;
+        margin: 0.8rem 0;
     }
 
     .navbar__menu.active {
@@ -222,15 +223,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100dvh;
+    min-height: 100dvh;
 }
 
 #instagram a[href*="elfsight.com/instagram-feed-instashow"] {
     filter: opacity(0) !important; /* hide watermark */
 }
 .es-widget {
-    max-height: 85dvh;
-    padding-top: 5dvh;
+    margin-top: 15dvh;
     overflow: hidden;
 }
 
@@ -348,79 +348,92 @@ body {
 
 /* Servicios */
 #servicios {
-    height: 100vh;
+    min-height: 100dvh;
     display: flex;
-    flex-wrap: wrap;
-    margin-inline: 0.5rem;
     align-items: center;
     justify-content: center;
 }
-
 .servicios__cont {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1vw;
-    font-family: "Roboto", sans-serif, Arial;
-    color: #383838;
-    font-size: clamp(0.75rem, 1vw, 1.125rem);
-    text-wrap: balance;
+    margin-top: 15dvh;
 }
-
-.servicios__cont li {
-    list-style-type: circle;
+.accordion {
+    margin-bottom: 0.8rem;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
 }
-
-.servicios__datos_importantes {
-    height: fit-content;
-    margin-top: 5rem;
-    padding: 1.5rem;
-    background-image: linear-gradient(
-        43deg,
-        #4158d0 0%,
-        #c850c0 46%,
-        #ffcc70 100%
-    );
-    border-start-start-radius: 15%;
-    border-start-end-radius: 15%;
-    font-family: "Roboto", sans-serif, Arial;
-    font-size: clamp(0.75rem, 1.25vw, 1.5rem);
+.accordion_title {
+    font-size: 1.2rem;
+    padding: 1rem;
+    background-color: #4a2c6d;
     color: #ffffff;
+    width: 80vw;
+    max-width: 40rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
-.servicios__cont h1 {
-    color: #60047a;
-    text-align: center;
-    font-family: "Roboto", sans-serif, Arial;
+.accordion_title:hover {
+    background-color: #3a1c5d;
 }
-
-.servicios__cont__inst {
-    border-radius: 10%;
-    background-color: #ffffff;
+.accordion_content {
+    width: 80vw;
+    max-width: 40rem;
     padding: 0.5rem;
-}
-
-.servicios__cont__serv {
-    border-radius: 10%;
+    display: none;
     background-color: #ffffff;
-    padding: 0.5rem;
+    border-radius: 1rem;
+    color: #383838;
 }
-
-.hidden.servicios__cont__inst {
-    transform: rotate(-180deg);
+.accordion_content ul {
+    list-style-type: disc;
+    padding-left: 20px;
 }
-
-.servicios__cont__inst.show {
-    transform: rotate(0deg);
-    transition: 2s;
+.accordion_content ul li {
+    margin: 0.7rem 0;
 }
-
-.hidden.servicios__cont__serv {
+.accordion_arrow {
+    transition: transform 0.3s;
+}
+.accordion.active .accordion_content {
+    display: block;
+}
+.active .accordion_arrow {
     transform: rotate(180deg);
+    color: #057505;
 }
 
-.servicios__cont__serv.show {
-    transform: rotate(0deg);
-    transition: 2s;
+.servicios__importantes {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px #00000033;
+    color: #3a1d5a;
+    line-height: 1.4;
+    margin: 1rem 1rem;
+}
+.servicios__importantes ul {
+    list-style-image: url("./img/globo_bullet.png");
+}
+.servicios__importantes li {
+    opacity: 0;
+    transform: translateY(1.875rem) scale(0.95);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.servicios__importantes.show li {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.servicios__importantes.show li:nth-child(1) {
+    transition-delay: 0.1s;
+}
+.servicios__importantes.show li:nth-child(2) {
+    transition-delay: 0.3s;
+}
+.servicios__importantes.show li:nth-child(3) {
+    transition-delay: 0.5s;
 }
 
 /* Servicios */
@@ -531,6 +544,24 @@ body {
     font-size: 1.5rem;
 }
 /* Extras */
+
+/* Reseñas */
+#reseñas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100dvh;
+    margin-inline: 1rem;
+    padding-top: 15dvh;
+}
+#reseñas a[href*="elfsight.com/google-reviews-widget"] {
+    filter: opacity(0) !important; /* hide watermark */
+}
+.es-widget {
+    padding-top: 15dvh;
+    overflow: hidden;
+}
+/* Reseñas */
 
 /* Ubicacion */
 #ubicacion {
