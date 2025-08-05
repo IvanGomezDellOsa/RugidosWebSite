@@ -348,13 +348,13 @@ body {
 
 /* Servicios */
 #servicios {
-    min-height: 100dvh;
+    min-height: 85dvh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .servicios__cont {
-    margin-top: 15dvh;
+    margin-top: 1dvh;
 }
 .accordion {
     margin-bottom: 0.8rem;
