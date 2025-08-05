@@ -136,6 +136,10 @@ function toggleAccordion(element) {
     accordion.classList.toggle("active");
 }
 
+document.querySelectorAll('.accordion_title').forEach((element) => {
+    element.addEventListener('click', () => toggleAccordion(element));
+});
+
 /* NavBar Mobile */
 
 const hamburger = document.querySelector(".hamburger");
