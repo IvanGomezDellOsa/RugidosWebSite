@@ -441,107 +441,46 @@ body {
 /* Extras */
 #extras {
     background: linear-gradient(135deg, #f3f3f3, #d8bfd8, #60047a);
-    height: 100dvh;
+    min-height: 100dvh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     flex-wrap: wrap;
-}
-
-.extras__container__video,
-.extras__container__info {
-    flex-grow: 1;
-    max-width: 35rem;
-    margin: 0.3rem 0.5rem;
-    min-height: 35vh;
-}
-
-.extras__container__video iframe {
-    width: 100%;
+    align-items: center;
 }
 
 .extras__container {
-    display: none;
-}
-
-.extras__container.active {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    border-radius: 0.7rem;
-}
-
-.extras__container__video {
-    display: flex;
-    justify-content: center;
-    border-radius: 0.3rem;
-}
-
-@media (max-width: 890px) {
-    .extras__container__video {
-        min-height: 15vh;
-    }
-}
-
-@media (max-height: 800px) {
-    .extras__container__video {
-        margin-top: 2rem;
-    }
-}
-
-.extras__container__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    word-wrap: break-word;
-    padding: 1rem;
-    background-color: #fbf9e5;
-    border-radius: 0.3rem;
-}
-
-.extras__container__info h1 {
-    color: #383838;
-    font-size: clamp(1rem, 2vw, 2rem);
-    font-family: "roboto", -apple-system, sans-serif;
-    align-self: center;
-    color: #60047a;
-}
-
-.extras__container__info p {
-    font-size: clamp(0.8rem, 1vw, 1rem);
-    color: #262626;
-}
-
-.extras__slider_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-top: 3rem;
+    justify-content: space-evenly;
+    margin-top: 10dvh;
 }
 
-#extras__buttons {
+.extras__container .accordion.active .accordion_content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f0f0f0;
 }
 
-.btn_left,
-.btn_right {
-    font-size: 5rem;
-    margin: 1rem;
+.accordion_content img {
+    width: 50%;
+    object-fit: contain;
+    margin-bottom: 0.7rem;
+    display: block;
+    margin-inline: auto;
 }
-
-.btn_right:hover {
-    color: #60047a;
+.extras__header {
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
 }
-
-.btn_left:hover {
-    color: #60047a;
-}
-
-.bx.bx-circle.bx-fade-up.bx-flip-vertical {
-    color: #60047a;
-    font-size: 1.5rem;
+.accordion_content p {
+    text-align: justify;
+    font-size: 1.1rem;
+    color: #383838;
+    font-weight: 400;
 }
 /* Extras */
 
