@@ -46,9 +46,9 @@ export function Navbar() {
             transition={{ type: 'spring', stiffness: 400 }}
           >
             <img 
-              src="/logo_rugidos.png"
+              src="/logo_rugidos.webp"
               alt="Rugidos Fiestas"
-              className="h-12 w-12 object-contain"
+              className="h-12 w-12 object-contain hidden md:block"
             />
             <span className="font-display text-2xl tracking-wider text-white hidden sm:block">
               RUGIDOS FIESTAS
