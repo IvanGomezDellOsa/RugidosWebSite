@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Poppins, Bebas_Neue } from 'next/font/google'
 import './globals.css'
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 const poppins = Poppins({ 
   subsets: ["latin"],
@@ -45,6 +47,8 @@ export default function RootLayout({
       </head>
       <body className={`${poppins.variable} ${bebasNeue.variable} font-sans antialiased bg-background text-foreground`}>
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
