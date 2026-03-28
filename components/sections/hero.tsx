@@ -75,7 +75,7 @@ export function Hero() {
 
       {/* Content */}
       <motion.div
-        style={{ y, opacity, scale }}
+        style={isDesktop ? { y, opacity, scale } : undefined}
         className="relative z-10 container mx-auto px-4 text-center"
       >
         {/* Logo with glow effect */}

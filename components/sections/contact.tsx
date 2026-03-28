@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { MapPin, Phone, Instagram, Facebook, ImageIcon, ExternalLink } from 'lucide-react'
 import { TiltCard } from '@/components/tilt-card'
@@ -10,6 +10,15 @@ import { RevealText } from '@/components/reveal-text'
 export function Contact() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    setIsDesktop(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -30,24 +39,26 @@ export function Contact() {
         style={{ y: backgroundY }}
       />
       
-      {/* Animated circles */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-20 right-20 w-64 h-64 rounded-full border border-white/10"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-20 w-48 h-48 rounded-full border border-white/10"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full border border-white/5 -translate-x-1/2 -translate-y-1/2"
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      </div>
+      {/* Animated circles (desktop only) */}
+      {isDesktop && (
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-20 right-20 w-64 h-64 rounded-full border border-white/10"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+          />
+          <motion.div
+            className="absolute bottom-20 left-20 w-48 h-48 rounded-full border border-white/10"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+          />
+          <motion.div
+            className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full border border-white/5 -translate-x-1/2 -translate-y-1/2"
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
+      )}
 
       {/* Grid pattern */}
       <div 
@@ -182,7 +193,7 @@ export function Contact() {
                     whileHover={{ scale: 1.05, zIndex: 10 }}
                     transition={{ type: 'spring', stiffness: 400 }}
                   >
-                    {item.type === 'video' ? (
+                    {item.type === 'video' && isDesktop ? (
                       <video
                         autoPlay
                         muted
@@ -194,7 +205,7 @@ export function Contact() {
                       </video>
                     ) : (
                       <img 
-                        src={item.src} 
+                        src={item.type === 'video' ? '/images/instagram/1_instagram.webp' : item.src} 
                         alt="Instagram Post" 
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

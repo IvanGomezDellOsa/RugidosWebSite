@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { Calendar, Users, Wallet, Check, Clock, Projector, Music, Utensils, Thermometer, PartyPopper, Gift, Droplets, Sparkles } from 'lucide-react'
 import { TiltCard } from '@/components/tilt-card'
@@ -42,6 +42,15 @@ const services = [
 export function ImportantNotes() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    setIsDesktop(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -62,31 +71,33 @@ export function ImportantNotes() {
         style={{ y: backgroundY }}
       />
       
-      {/* Floating circles decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full border border-white/10"
-            style={{
-              width: `${100 + i * 80}px`,
-              height: `${100 + i * 80}px`,
-              left: `${10 + i * 15}%`,
-              top: `${20 + (i % 3) * 25}%`,
-            }}
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.1, 0.2, 0.1],
-            }}
-            transition={{
-              duration: 4 + i,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: i * 0.5,
-            }}
-          />
-        ))}
-      </div>
+      {/* Floating circles decoration (desktop only) */}
+      {isDesktop && (
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full border border-white/10"
+              style={{
+                width: `${100 + i * 80}px`,
+                height: `${100 + i * 80}px`,
+                left: `${10 + i * 15}%`,
+                top: `${20 + (i % 3) * 25}%`,
+              }}
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.1, 0.2, 0.1],
+              }}
+              transition={{
+                duration: 4 + i,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: i * 0.5,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Grid pattern */}
       <div 

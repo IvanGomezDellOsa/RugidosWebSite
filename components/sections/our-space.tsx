@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { 
   Rocket,
@@ -122,6 +122,15 @@ export function OurSpace() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    setIsDesktop(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % Math.ceil(galleryImages.length / 3))
@@ -188,7 +197,7 @@ export function OurSpace() {
                 <div key={slideIndex} className="flex-shrink-0 w-full grid grid-cols-1 md:grid-cols-3 gap-4">
                   {galleryImages.slice(slideIndex * 3, slideIndex * 3 + 3).map((image, imgIndex) => {
                     const actualIndex = slideIndex * 3 + imgIndex
-                    return (
+                    return isDesktop ? (
                       <motion.div
                         key={image.id}
                         className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer group"
@@ -201,12 +210,23 @@ export function OurSpace() {
                           loading="lazy"
                           className="w-full h-full object-cover"
                         />
-                        
-                        {/* Hover overlay */}
                         <div className="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                           <span className="text-white font-semibold text-lg">Ver imagen</span>
                         </div>
                       </motion.div>
+                    ) : (
+                      <div
+                        key={image.id}
+                        className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer"
+                        onClick={() => openLightbox(actualIndex)}
+                      >
+                        <img 
+                          src={image.src} 
+                          alt={image.alt}
+                          loading="lazy"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                     )
                   })}
                 </div>
