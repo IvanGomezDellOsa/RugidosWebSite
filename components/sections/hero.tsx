@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { MagneticButton } from '@/components/magnetic-button'
@@ -9,12 +9,21 @@ import { FloatingShapes } from '@/components/floating-shapes'
 export function Hero() {
   const containerRef = useRef(null)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    setIsDesktop(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.8
     }
-  }, [])
+  }, [isDesktop])
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -33,16 +42,18 @@ export function Hero() {
     >
       {/* Video Background Placeholder */}
       <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        </video>
+        {isDesktop && (
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          </video>
+        )}
         
         {/* Dark overlay para legibilidad del texto */}
         <div className="absolute inset-0 bg-black/80" />
