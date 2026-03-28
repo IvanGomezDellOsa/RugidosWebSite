@@ -10,7 +10,7 @@ export function StatementDivider() {
   return (
     <section
       ref={sectionRef}
-      className="py-16 md:py-20 relative overflow-hidden flex items-center justify-center border-y border-white/5"
+      className="py-16 md:py-20 relative overflow-hidden hidden md:flex items-center justify-center border-y border-white/5"
     >
       {/* Background gradients */}
       <div className="absolute inset-0 bg-gradient-to-r from-background via-accent/10 to-background" />

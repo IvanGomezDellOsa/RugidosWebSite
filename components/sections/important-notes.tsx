@@ -66,10 +66,14 @@ export function ImportantNotes() {
       className="py-24 md:py-32 relative overflow-hidden"
     >
       {/* Animated background */}
-      <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-purple-900"
-        style={{ y: backgroundY }}
-      />
+      {isDesktop ? (
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-purple-900"
+          style={{ y: backgroundY }}
+        />
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-purple-900" />
+      )}
       
       {/* Floating circles decoration (desktop only) */}
       {isDesktop && (

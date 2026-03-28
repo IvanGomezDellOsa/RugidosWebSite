@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Bot, Users, CakeSlice, Paintbrush, Popcorn, PartyPopper, UtensilsCrossed, Sparkles, GlassWater, Sticker, Camera, ImageIcon, ChevronDown, ChevronUp } from 'lucide-react'
 import { TiltCard } from '@/components/tilt-card'
@@ -114,6 +114,15 @@ export function Extras() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
   const [expandedCard, setExpandedCard] = useState<string | null>('rugitattoo')
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    setIsDesktop(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
 
   const featuredExtras = extras.filter(e => e.featured)
   const regularExtras = extras.filter(e => !e.featured)
@@ -127,17 +136,21 @@ export function Extras() {
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       
-      {/* Animated orbs */}
-      <motion.div
-        className="absolute top-1/4 left-10 w-64 h-64 rounded-full bg-accent/10 blur-3xl"
-        animate={{ scale: [1, 1.2, 1], x: [0, 20, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-10 w-80 h-80 rounded-full bg-primary/10 blur-3xl"
-        animate={{ scale: [1, 1.3, 1], x: [0, -30, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-      />
+      {/* Animated orbs (desktop only) */}
+      {isDesktop && (
+        <>
+          <motion.div
+            className="absolute top-1/4 left-10 w-64 h-64 rounded-full bg-accent/10 blur-3xl"
+            animate={{ scale: [1, 1.2, 1], x: [0, 20, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-10 w-80 h-80 rounded-full bg-primary/10 blur-3xl"
+            animate={{ scale: [1, 1.3, 1], x: [0, -30, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+          />
+        </>
+      )}
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
