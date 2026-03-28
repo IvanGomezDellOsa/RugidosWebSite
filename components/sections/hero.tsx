@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { MagneticButton } from '@/components/magnetic-button'
-import { FloatingShapes } from '@/components/floating-shapes'
+
 
 export function Hero() {
   const containerRef = useRef(null)
@@ -57,52 +57,9 @@ export function Hero() {
         
         {/* Dark overlay para legibilidad del texto */}
         <div className="absolute inset-0 bg-black/80" />
-        
-        {/* Animated gradient orbs */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/30 blur-[120px]"
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/20 blur-[100px]"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -40, 0],
-            y: [0, 40, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 right-1/3 w-[400px] h-[400px] rounded-full bg-pink-500/15 blur-[80px]"
-          animate={{
-            scale: [1, 1.15, 1],
-            x: [0, 30, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1,
-          }}
-        />
       </div>
 
-      <FloatingShapes />
+
 
       {/* Grid pattern overlay */}
       <div 
