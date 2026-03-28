@@ -40,8 +40,10 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Video Background Placeholder */}
       <div className="absolute inset-0 z-0">
+        {/* Fondo gradiente estático (visible en mobile sin video) */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-purple-900" />
+
         {isDesktop && (
           <video
             ref={videoRef}
