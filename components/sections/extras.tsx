@@ -14,7 +14,7 @@ const extras = [
     subtitle: 'Show de robot LED',
     description: '"Rugibot" es nuestro exclusivo robot de luces LED, llamativo y completamente único. Acompaña el momento del baile con coreografías y juegos que mantienen a los chicos y grandes en movimiento de principio a fin.',
     featured: true,
-    images: 1, // Cantidad de imágenes para este extra
+    images: 1,
   },
   {
     id: 'fiesta-fluor',
@@ -96,7 +96,7 @@ const extras = [
     title: 'RugiTattoo Point',
     subtitle: 'Tattoos temporales',
     description: '',
-    images: 2, // Este extra tiene 2 fotos
+    images: 2,
     options: [
       {
         name: 'RugiTattoo Glitter',
@@ -208,6 +208,7 @@ export function Extras() {
                     <img 
                       src={`/images/extras/${extra.id}.webp`} 
                       alt={extra.title}
+                      loading="lazy"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -288,6 +289,7 @@ export function Extras() {
                         <img 
                           src={extra.images === 1 ? `/images/extras/${extra.id}.webp` : `/images/extras/${extra.id}-${i+1}.webp`} 
                           alt={`${extra.title} ${i+1}`}
+                          loading="lazy"
                           className="w-full h-full object-cover"
                         />
                       </div>

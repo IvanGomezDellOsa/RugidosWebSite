@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, ReactNode } from 'react'
+import { useRef, useState, useEffect, ReactNode } from 'react'
 import { motion } from 'framer-motion'
 
 interface TiltCardProps {
@@ -14,9 +14,18 @@ export function TiltCard({ children, className = '', glareEnabled = true }: Tilt
   const [rotateX, setRotateX] = useState(0)
   const [rotateY, setRotateY] = useState(0)
   const [glarePosition, setGlarePosition] = useState({ x: 50, y: 50 })
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    setIsDesktop(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return
+    if (!ref.current || !isDesktop) return
     
     const { left, top, width, height } = ref.current.getBoundingClientRect()
     const x = (e.clientX - left) / width
@@ -31,6 +40,10 @@ export function TiltCard({ children, className = '', glareEnabled = true }: Tilt
     setRotateX(0)
     setRotateY(0)
     setGlarePosition({ x: 50, y: 50 })
+  }
+
+  if (!isDesktop) {
+    return <div className={className}>{children}</div>
   }
 
   return (

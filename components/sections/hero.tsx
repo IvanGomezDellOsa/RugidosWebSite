@@ -41,7 +41,7 @@ export function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
-        {/* Fondo gradiente estático (visible en mobile sin video) */}
+        {/* Mobile fallback gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-purple-900" />
 
         {isDesktop && (
@@ -57,8 +57,8 @@ export function Hero() {
           </video>
         )}
         
-        {/* Dark overlay para legibilidad del texto */}
-        <div className="absolute inset-0 bg-black/80" />
+        {/* Adaptive overlay opacity */}
+        <div className="absolute inset-0 bg-black/50 md:bg-black/80" />
       </div>
 
 

@@ -6,7 +6,7 @@ import { Star, Quote, ExternalLink, Play, Pause } from 'lucide-react'
 import { InfiniteMarquee } from '@/components/infinite-marquee'
 import { TiltCard } from '@/components/tilt-card'
 
-// Sample reviews - El cliente puede agregar más
+// Testimonios reales de clientes seleccionados.
 const sampleReviews = [
   {
     id: 1,
@@ -283,7 +283,7 @@ function ReviewCard({ review }: { review: typeof sampleReviews[0] }) {
         <div className="glass rounded-2xl p-6 h-full flex flex-col group-hover:bg-white/[0.08] transition-colors relative overflow-hidden">
           {/* Header con foto */}
           <div className="flex items-center gap-4 mb-4">
-            <img src={review.photo} alt={review.name} className="w-12 h-12 rounded-full object-cover border border-white/10" />
+            <img src={review.photo} alt={review.name} loading="lazy" className="w-12 h-12 rounded-full object-cover border border-white/10" />
             <div className="flex-1">
               <p className="font-semibold text-white leading-tight">{review.name}</p>
               <p className="text-xs text-white/50">{review.date}</p>

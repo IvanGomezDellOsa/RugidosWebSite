@@ -158,7 +158,7 @@ export function Contact() {
               </MagneticButton>
             </div>
 
-            {/* Instagram Feed Placeholder */}
+            {/* Integración de Feed de Instagram */}
             <div className="glass-strong rounded-2xl p-6">
               <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
                 <Instagram className="w-5 h-5" />
@@ -196,6 +196,7 @@ export function Contact() {
                       <img 
                         src={item.src} 
                         alt="Instagram Post" 
+                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     )}

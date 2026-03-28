@@ -170,7 +170,7 @@ export function OurSpace() {
           </motion.p>
         </motion.div>
 
-        {/* Gallery Carousel */}
+        {/* Galería de Imágenes */}
         <motion.div
           className="mb-20 relative"
           initial={{ opacity: 0, y: 50 }}
@@ -198,6 +198,7 @@ export function OurSpace() {
                         <img 
                           src={image.src} 
                           alt={image.alt}
+                          loading="lazy"
                           className="w-full h-full object-cover"
                         />
                         
@@ -245,7 +246,7 @@ export function OurSpace() {
           )}
         </motion.div>
 
-        {/* Features Grid - Bento Style */}
+        {/* Grilla de Características y Servicios */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {spaceFeatures.map((feature, index) => (
             <motion.div
@@ -319,6 +320,7 @@ export function OurSpace() {
               <img 
                 src={galleryImages[lightboxIndex]?.src} 
                 alt={galleryImages[lightboxIndex]?.alt}
+                loading="lazy"
                 className="w-full h-full object-contain bg-black/50"
               />
             </motion.div>
@@ -349,6 +351,7 @@ export function OurSpace() {
                   <img 
                     src={image.src} 
                     alt={`Miniatura ${i + 1}`}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </button>
