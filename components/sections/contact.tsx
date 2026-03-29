@@ -209,7 +209,7 @@ export function Contact() {
                       </video>
                     ) : (
                       <img 
-                        src={item.type === 'video' ? '/images/instagram/1_instagram.webp' : item.src} 
+                        src={item.type === 'video' ? '/images/instagram/1_instagram_mobile.webp' : item.src} 
                         alt="Instagram Post" 
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
