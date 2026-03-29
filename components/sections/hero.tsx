@@ -78,65 +78,48 @@ export function Hero() {
         style={isDesktop ? { y, opacity, scale } : undefined}
         className="relative z-10 container mx-auto px-4 text-center"
       >
-        {/* Logo with glow effect */}
-        {isDesktop ? (
-          <motion.div
-            className="mb-8 flex justify-center"
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{
-              type: 'spring',
-              stiffness: 200,
-              damping: 20,
-              delay: 0.2,
-            }}
-          >
-            <div className="relative">
-              {/* Glow rings */}
-              <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-accent via-primary to-pink-500 blur-2xl opacity-50"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 0.3, 0.5],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-              <motion.div
-                className="absolute -inset-4 rounded-full"
-                style={{
-                  background: 'conic-gradient(from 0deg, #ff6b35, #facc15, #ec4899, #a855f7, #ff6b35)',
-                  filter: 'blur(20px)',
-                  opacity: 0.4,
-                }}
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
-              />
-              <img
-                src="/logo_rugidos.webp"
-                alt="Rugidos Fiestas"
-                fetchPriority="high"
-                className="relative h-36 w-36 md:h-44 md:w-44 object-contain drop-shadow-2xl"
-              />
-            </div>
-          </motion.div>
-        ) : (
-          <div className="mb-8 flex justify-center">
+        {/* Logo */}
+        <div className="mb-8 flex justify-center">
+          <div className="relative">
+            {/* Glow rings (desktop only) */}
+            {isDesktop && (
+              <>
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-accent via-primary to-pink-500 blur-2xl opacity-50"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 0.3, 0.5],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+                <motion.div
+                  className="absolute -inset-4 rounded-full"
+                  style={{
+                    background: 'conic-gradient(from 0deg, #ff6b35, #facc15, #ec4899, #a855f7, #ff6b35)',
+                    filter: 'blur(20px)',
+                    opacity: 0.4,
+                  }}
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: 'linear',
+                  }}
+                />
+              </>
+            )}
             <img
               src="/logo_rugidos.webp"
               alt="Rugidos Fiestas"
               fetchPriority="high"
-              className="h-36 w-36 object-contain drop-shadow-2xl"
+              className="relative h-36 w-36 md:h-44 md:w-44 object-contain drop-shadow-2xl"
             />
           </div>
-        )}
+        </div>
 
         {/* Title */}
         {isDesktop ? (
