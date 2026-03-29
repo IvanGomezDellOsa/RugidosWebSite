@@ -37,7 +37,7 @@ export function Footer() {
               transition={{ duration: 0.6 }}
             >
               <img
-                src="/logo_rugidos.png"
+                src="/logo_rugidos.webp"
                 alt="Rugidos Fiestas"
                 className="h-16 w-16 object-contain"
               />
@@ -165,7 +165,7 @@ export function Footer() {
               Tandil, Provincia de Buenos Aires
             </p>
             <p className="text-white/60 text-sm font-medium tracking-wide">
-              ¿Buscás una web como esta? <a href="mailto:ivangomezdellosa@gmail.com" className="text-accent hover:text-white transition-all duration-300 border-b border-accent/30 hover:border-white">Contactame</a>
+              ¿Buscás una web como esta? <a href="mailto:ivangomezdellosa@gmail.com" className="text-accent hover:text-white transition-all duration-300 border-b border-accent/30 hover:border-white cursor-pointer relative z-30">Contactame: ivangomezdellosa@gmail.com</a>
             </p>
           </div>
         </div>
