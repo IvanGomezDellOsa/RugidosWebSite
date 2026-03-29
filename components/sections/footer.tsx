@@ -159,15 +159,10 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-white/40 text-sm">
-              Tandil, Provincia de Buenos Aires
-            </p>
-            <p className="text-white/60 text-sm font-medium tracking-wide">
-              ¿Buscás una web como esta? <a href="mailto:ivangomezdellosa@gmail.com" className="text-accent hover:text-white transition-all duration-300 border-b border-accent/30 hover:border-white cursor-pointer relative z-30">Contactame: ivangomezdellosa@gmail.com</a>
-            </p>
-          </div>
+        <div className="border-t border-white/10 py-8 text-center">
+          <p className="text-white/60 text-sm font-medium tracking-wide">
+            ¿Buscás una web como esta? <a href="mailto:ivangomezdellosa@gmail.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-white transition-all duration-300 border-b border-accent/30 hover:border-white cursor-pointer relative z-30">Contactame</a> a: <span className="text-white">ivangomezdellosa@gmail.com</span>
+          </p>
         </div>
       </div>
     </footer>
