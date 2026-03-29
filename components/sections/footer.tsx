@@ -160,12 +160,12 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/40 text-sm text-center md:text-left">
-              &copy; {currentYear} Rugidos Fiestas Tandil. Todos los derechos reservados.
-            </p>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-white/40 text-sm">
-              Salón de fiestas infantiles en Tandil, Argentina
+              Tandil, Provincia de Buenos Aires
+            </p>
+            <p className="text-white/60 text-sm font-medium tracking-wide">
+              ¿Buscás una web como esta? <a href="mailto:ivangomezdellosa@gmail.com" className="text-accent hover:text-white transition-all duration-300 border-b border-accent/30 hover:border-white">Contactame</a>
             </p>
           </div>
         </div>
