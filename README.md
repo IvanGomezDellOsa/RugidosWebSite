@@ -106,10 +106,6 @@ Todos los efectos pesados (hooks de Framer Motion, parallax, glassmorphism, tilt
 
 ---
 
-## 🎥 Demo
-
----
-
 ## 📝 Notas de Desarrollo
 
 **Metodología:** Desarrollo asistido por LLMs para acelerar la maquetación en Next.js, generación de componentes, escritura de animaciones y pulido de sintaxis TypeScript. Las decisiones de producto que realmente definen el resultado — arquitectura de componentes, estrategia de rendimiento mobile-first, sustitución de widgets pesados por feeds locales para eliminar CLS, selección de librerías de animación, diseño de la experiencia visual general — fueron orquestadas y definidas por mí a lo largo de todo el ciclo de desarrollo.
