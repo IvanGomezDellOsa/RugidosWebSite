@@ -161,7 +161,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 py-8 text-center">
           <p className="text-white/60 text-sm font-medium tracking-wide">
-            ¿Buscás una web como esta? <a href="mailto:ivangomezdellosa@gmail.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-white transition-all duration-300 border-b border-accent/30 hover:border-white cursor-pointer relative z-30">Contactame</a> a: <span className="text-white">ivangomezdellosa@gmail.com</span>
+            ¿Buscás una web como esta? Contactame a: <span className="text-white">ivangomezdellosa@gmail.com</span>
           </p>
         </div>
       </div>
