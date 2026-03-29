@@ -56,7 +56,7 @@ export function Navbar() {
           </motion.a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-1">
             {navItems.map((item, index) => (
               <MagneticButton key={item.href} strength={0.2}>
                 <motion.a
@@ -90,7 +90,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden relative z-10 p-2 text-white"
+            className="xl:hidden relative z-10 p-2 text-white"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -101,7 +101,7 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 lg:hidden"
+            className="fixed inset-0 z-40 xl:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

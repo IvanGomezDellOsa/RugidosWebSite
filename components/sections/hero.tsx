@@ -116,7 +116,7 @@ export function Hero() {
               src="/logo_rugidos.webp"
               alt="Rugidos Fiestas"
               fetchPriority="high"
-              className="relative h-36 w-36 md:h-44 md:w-44 object-contain drop-shadow-2xl"
+              className="relative h-36 w-36 md:h-40 md:w-40 xl:h-44 xl:w-44 object-contain drop-shadow-2xl"
             />
           </div>
         </div>
@@ -126,7 +126,7 @@ export function Hero() {
           <>
             <div className="overflow-hidden mb-4">
               <motion.h1
-                className="font-display text-6xl md:text-8xl lg:text-9xl tracking-tight text-white"
+                className="font-display text-6xl md:text-7xl xl:text-8xl 2xl:text-9xl tracking-tight text-white"
                 initial={{ y: '100%' }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
@@ -136,7 +136,7 @@ export function Hero() {
             </div>
             <div className="overflow-hidden mb-8">
               <motion.p
-                className="text-2xl md:text-3xl text-white/60 tracking-[0.3em] uppercase"
+                className="text-2xl md:text-2xl xl:text-3xl text-white/60 tracking-[0.3em] uppercase"
                 initial={{ y: '100%' }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7, ease: [0.33, 1, 0.68, 1] }}
@@ -145,7 +145,7 @@ export function Hero() {
               </motion.p>
             </div>
             <motion.p
-              className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-12 max-w-2xl mx-auto"
+              className="text-xl md:text-xl xl:text-2xl 2xl:text-3xl text-white/90 mb-12 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.9 }}
