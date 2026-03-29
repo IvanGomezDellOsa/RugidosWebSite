@@ -161,7 +161,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 py-8 text-center">
           <p className="text-white/60 text-sm font-medium tracking-wide">
-            ¿Buscás una web como esta? Contactame a: <span className="text-white">ivangomezdellosa@gmail.com</span>
+            ¿Querés tu propia página web? Contactame en: <span className="text-white">ivangomezdellosa@gmail.com</span>
           </p>
         </div>
       </div>
