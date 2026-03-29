@@ -237,18 +237,26 @@ export function OurSpace() {
           {/* Carousel Controls */}
           {galleryImages.length > 3 && (
             <>
-              <button
+              <motion.button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10"
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-black/50 backdrop-blur-md border border-white/50 flex items-center justify-center text-white hover:bg-accent hover:border-accent transition-colors shadow-[0_8px_32px_rgba(0,0,0,0.5)] z-10"
+                animate={isInView ? { scale: [1, 1.05, 1], boxShadow: ["0px 0px 0px rgba(255,255,255,0)", "0px 0px 20px rgba(255,255,255,0.2)", "0px 0px 0px rgba(255,255,255,0)"] } : {}}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button
+                <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
+              </motion.button>
+              <motion.button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10"
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-black/50 backdrop-blur-md border border-white/50 flex items-center justify-center text-white hover:bg-accent hover:border-accent transition-colors shadow-[0_8px_32px_rgba(0,0,0,0.5)] z-10"
+                animate={isInView ? { scale: [1, 1.05, 1], boxShadow: ["0px 0px 0px rgba(255,255,255,0)", "0px 0px 20px rgba(255,255,255,0.2)", "0px 0px 0px rgba(255,255,255,0)"] } : {}}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
-                <ChevronRight className="w-6 h-6" />
-              </button>
+                <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
+              </motion.button>
 
               {/* Dots indicator */}
               <div className="flex justify-center gap-2 mt-6">
