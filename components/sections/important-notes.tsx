@@ -37,6 +37,7 @@ const services = [
   { icon: Utensils, text: 'Vajilla, mantelería y servilletas.' },
   { icon: Gift, text: 'Mesa exclusiva para la torta.' },
   { icon: Thermometer, text: 'Ambiente climatizado (aire acondicionado y calefacción).' },
+  { icon: Check, text: 'Servicio de atención de mesas.' },
 ]
 
 export function ImportantNotes() {
