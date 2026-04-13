@@ -12,7 +12,7 @@ const extras = [
     icon: Bot,
     title: 'Rugibot',
     subtitle: 'Show de robot LED',
-    description: '"Rugibot" es nuestro exclusivo robot de luces LED, llamativo y completamente único. Acompaña el momento del baile con coreografías y juegos que mantienen a los chicos y grandes en movimiento de principio a fin.',
+    description: '"Rugibot" es nuestro exclusivo robot de luces LED, llamativo y completamente único. Acompaña el momento del baile con coreografías y juegos que mantienen a los niños y grandes en movimiento de principio a fin.',
     featured: true,
     images: 1,
   },
@@ -21,7 +21,7 @@ const extras = [
     icon: PartyPopper,
     title: 'Fiesta Flúor',
     subtitle: '¡La primera y original de Tandil!',
-    description: 'Incluye mantelería, vasos y decoración flúor. Durante el momento del baile, maquillamos a todos los chicos con tonos neón y les prestamos gorras flúor.',
+    description: 'Incluye mantelería, vasos y decoración flúor. Durante el momento del baile, maquillamos a todos los niños con tonos neón y les prestamos gorras flúor.',
     featured: true,
     images: 1,
   },
@@ -30,7 +30,7 @@ const extras = [
     icon: Camera,
     title: 'Espejo Mágico',
     subtitle: 'Cabina fotográfica interactiva',
-    description: 'Nuestra exclusiva cabina fotográfica con forma de espejo de gran tamaño cuenta con pantalla táctil para fotos en la alfombra roja usando una gran variedad de divertidos sombreros, carteles y accesorios. Al terminar, podés firmar la tira en pantalla, agregarle emoticones o escribir un mensaje del color que elijas. Después del evento te enviamos las fotos en formato digital como un hermoso recuerdo. ¡Tanto chicos como adultos de todas las edades pueden disfrutarlo!',
+    description: 'Nuestra exclusiva cabina fotográfica con forma de espejo de gran tamaño cuenta con pantalla táctil para fotos en la alfombra roja usando una gran variedad de divertidos sombreros, carteles y accesorios. Al terminar, podés firmar la tira en pantalla, agregarle emoticones o escribir un mensaje del color que elijas. Después del evento te enviamos las fotos en formato digital como un hermoso recuerdo. ¡Tanto niños como adultos de todas las edades pueden disfrutarlo!',
     featured: true,
     images: 1,
   },
@@ -160,7 +160,7 @@ export function Extras() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="inline-block px-6 pt-5 pb-2 md:px-10 md:pt-6 md:pb-3 glass rounded-full text-3xl md:text-5xl lg:text-6xl font-display tracking-tight leading-none text-white mb-6">
+          <h2 className="inline-block px-6 py-4 md:px-10 md:py-5 glass rounded-full text-3xl md:text-5xl lg:text-6xl font-display tracking-tight leading-none text-white mb-6">
             SERVICIOS ADICIONALES
           </h2>
           
@@ -214,7 +214,7 @@ export function Extras() {
                       {extra.subtitle}
                     </span>
                     <h3 className="text-3xl font-display text-white mt-2 mb-4">{extra.title}</h3>
-                    <p className="text-white/70 leading-relaxed">{extra.description}</p>
+                    <p className="text-white/70 text-[15px] leading-relaxed">{extra.description}</p>
                   </div>
 
                   <div className="relative mt-6 aspect-square rounded-xl overflow-hidden glass">
@@ -283,14 +283,14 @@ export function Extras() {
                               <h4 className="font-semibold text-white mb-2">
                                 {i === 0 ? 'OPCIÓN 1' : 'OPCIÓN 2'} — {option.name}
                               </h4>
-                              <p className="text-white/60 text-sm">{option.description}</p>
+                              <p className="text-white/60 text-[15px]">{option.description}</p>
                             </div>
                           ))}
                         </motion.div>
                       )}
                     </AnimatePresence>
                   ) : (
-                    <p className="text-white/50 text-sm group-hover:text-white/70 transition-colors">
+                    <p className="text-white/50 text-[15px] group-hover:text-white/70 transition-colors">
                       {extra.description}
                     </p>
                   )}
@@ -321,7 +321,7 @@ export function Extras() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <p className="text-white/50 mb-6">Consultá por los extras disponibles para tu fecha</p>
+          <p className="text-white/50 mb-6">Consultá por los extras disponibles</p>
           
           <MagneticButton strength={0.3}>
             <a

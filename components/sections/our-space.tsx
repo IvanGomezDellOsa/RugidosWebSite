@@ -56,7 +56,7 @@ const spaceFeatures = [
   {
     icon: Baby,
     title: 'Plaza blanda',
-    description: 'Pelotero para los más chiquitos, motos, subibaja, tobogán.',
+    description: 'Pelotero para los más chicos, motos, subibaja, tobogán.',
   },
   {
     icon: Tv,
@@ -76,7 +76,7 @@ const spaceFeatures = [
   {
     icon: Target,
     title: 'Tejo de aire',
-    description: 'Entretenimiento para chicos y grandes.',
+    description: 'Entretenimiento para niños y grandes.',
   },
   {
     icon: Shield,
@@ -165,7 +165,7 @@ export function OurSpace() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="inline-block px-6 pt-5 pb-2 md:px-10 md:pt-6 md:pb-3 glass rounded-full text-3xl md:text-5xl lg:text-6xl font-display tracking-tight leading-none text-white mb-6">
+          <h2 className="inline-block px-6 py-4 md:px-10 md:py-5 glass rounded-full text-3xl md:text-5xl lg:text-6xl font-display tracking-tight leading-none text-white mb-6">
             NUESTRO ESPACIO
           </h2>
           

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, MessageCircle } from 'lucide-react'
+import { ChevronUp } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export function WhatsAppButton() {
@@ -28,21 +28,28 @@ export function WhatsAppButton() {
   return (
     <div
       className={cn(
-        'fixed bottom-6 right-6 z-50 flex items-end gap-3 transition-all duration-500',
+        'fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 transition-all duration-500',
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
       )}
     >
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="flex items-center justify-center w-10 h-10 glass-strong border border-white/20 rounded-full shadow-lg hover:scale-110 hover:bg-white/10 transition-all duration-300 group"
+        aria-label="Volver arriba"
+      >
+        <ChevronUp className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+      </button>
       <motion.a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg shadow-[#25D366]/30 hover:scale-110 hover:shadow-[#25D366]/50 transition-all duration-300"
+        className="flex items-center justify-center w-14 h-14 glass-strong border border-[#25D366]/50 rounded-full shadow-lg hover:bg-[#25D366]/10 hover:scale-110 transition-all duration-300 group"
         aria-label="Contactar por WhatsApp"
       >
         
         {/* Icon */}
         <svg 
-          className="w-8 h-8 text-white relative z-10" 
+          className="w-8 h-8 text-[#25D366] group-hover:scale-110 transition-transform relative z-10" 
           fill="currentColor" 
           viewBox="0 0 24 24"
         >

@@ -72,19 +72,14 @@ export function Navbar() {
               </MagneticButton>
             ))}
             
-            <MagneticButton strength={0.3}>
               <motion.a
                 href="https://wa.me/5492494306222"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-4 px-6 py-2.5 bg-gradient-to-r from-accent to-primary text-white text-sm font-medium rounded-full relative overflow-hidden group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="ml-4 px-6 py-2.5 bg-gradient-to-r from-accent to-primary text-white text-sm font-medium rounded-full relative overflow-hidden"
               >
                 <span className="relative z-10">Reservar</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.a>
-            </MagneticButton>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -107,12 +102,12 @@ export function Navbar() {
             exit={{ opacity: 0 }}
           >
             <div 
-              className="absolute inset-0 bg-black/80 backdrop-blur-xl"
+              className="absolute inset-0 bg-[#050505]"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
             <motion.nav
-              className="absolute right-0 top-0 bottom-0 w-80 max-w-full bg-card/95 backdrop-blur-xl p-8 pt-24 flex flex-col"
+              className="absolute right-0 top-0 bottom-0 w-80 max-w-full bg-card p-8 pt-24 flex flex-col"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}

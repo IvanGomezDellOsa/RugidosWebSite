@@ -10,13 +10,13 @@ const importantNotes = [
   {
     icon: Calendar,
     title: 'Cumpleaños hasta 8 años',
-    description: 'Especialistas en fiestas para los más chiquitos',
+    description: 'Especialistas en fiestas para los más chicos',
     gradient: 'from-pink-500 to-rose-600',
   },
   {
     icon: Users,
     title: 'Capacidad',
-    description: '35 chicos y 30 adultos',
+    description: '35 niños y 30 adultos',
     gradient: 'from-accent to-yellow-500',
   },
   {
@@ -156,7 +156,7 @@ export function ImportantNotes() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="text-center mb-12">
-            <h2 className="inline-block px-6 pt-5 pb-2 md:px-10 md:pt-6 md:pb-3 glass rounded-full text-3xl md:text-5xl lg:text-6xl font-display tracking-tight leading-none text-white mb-6">
+            <h2 className="inline-block px-6 py-4 md:px-10 md:py-5 glass rounded-full text-4xl md:text-5xl lg:text-6xl font-display tracking-tight leading-none text-white mb-6">
               SERVICIOS INCLUIDOS
             </h2>
           </div>

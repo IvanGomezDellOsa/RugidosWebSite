@@ -158,7 +158,7 @@ export function Reviews() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="inline-block px-6 pt-5 pb-2 md:px-10 md:pt-6 md:pb-3 glass rounded-full text-3xl md:text-5xl lg:text-6xl font-display tracking-tight leading-none text-white mb-6">
+          <h2 className="inline-block px-6 py-4 md:px-10 md:py-5 glass rounded-full text-3xl md:text-5xl lg:text-6xl font-display tracking-tight leading-none text-white mb-6">
             RESEÑAS
           </h2>
           

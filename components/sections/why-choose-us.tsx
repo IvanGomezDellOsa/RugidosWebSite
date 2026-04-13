@@ -10,12 +10,6 @@ import { RevealText } from '@/components/reveal-text'
 
 const features = [
   {
-    icon: Award,
-    title: 'Experiencia',
-    description: 'Más de 18 años siendo referentes del rubro en Tandil.',
-    color: 'from-primary to-purple-600',
-  },
-  {
     icon: Heart,
     title: 'Atención Personalizada',
     description: 'Cada familia recibe un trato esmerado y único.',
@@ -30,8 +24,14 @@ const features = [
   {
     icon: Users,
     title: 'Espacio Premium',
-    description: 'Instalaciones impecables para chicos y grandes.',
+    description: 'Instalaciones impecables para niños y adultos.',
     color: 'from-cyan-500 to-blue-600',
+  },
+  {
+    icon: Award,
+    title: 'Experiencia',
+    description: 'Más de 18 años siendo referentes del rubro en Tandil.',
+    color: 'from-primary to-purple-600',
   },
 ]
 
@@ -59,19 +59,19 @@ export function WhyChooseUs() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="inline-block px-6 pt-5 pb-2 md:px-10 md:pt-6 md:pb-3 glass rounded-full text-3xl md:text-5xl lg:text-6xl font-display tracking-tight leading-none text-white mb-8">
+          <h2 className="inline-block px-6 py-4 md:px-10 md:py-5 glass rounded-full text-3xl md:text-5xl lg:text-6xl font-display tracking-tight leading-none text-white mb-8">
             <RevealText delay={0.3}>¿POR QUÉ ELEGIRNOS?</RevealText>
           </h2>
           
           <motion.p
-            className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             Con <span className="text-accent font-semibold">formación profesional y más de 18 años de trayectoria</span> en fiestas infantiles, 
             somos referentes del rubro en Tandil. Cada familia recibe una atención esmerada 
-            y personalizada, en un espacio impecable, cómodo y pensado para que tanto los chicos 
+            y personalizada, en un espacio impecable, cómodo y pensado para que tanto los niños 
             como los grandes disfruten de principio a fin. Nos enorgullece ofrecer propuestas 
             que realmente sorprenden y <span className="text-accent font-semibold">marcan tendencia</span> en la ciudad.
           </motion.p>
