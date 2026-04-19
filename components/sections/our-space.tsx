@@ -10,6 +10,7 @@ import {
   Store,
   Baby,
   Tv,
+  MonitorPlay,
   Gamepad2,
   ChefHat,
   Target,
@@ -64,14 +65,19 @@ const spaceFeatures = [
     description: 'Para proyecciones de videos, bailes, karaoke y coreografías.',
   },
   {
-    icon: Gamepad2,
-    title: 'Metegol',
-    description: 'Clásico que nunca falla para todas las edades.',
+    icon: MonitorPlay,
+    title: 'Videojuego',
+    description: 'Máquina arcade de pie con pantalla LED multijugador.',
   },
   {
     icon: ChefHat,
     title: 'Cocina amplia y equipada',
     description: 'Habilitada bajo normas bromatológicas. Horno convencional, microondas, horno eléctrico, pavas eléctricas y heladera. Nuestro personal propio se encarga de servir todo lo que traés.',
+  },
+  {
+    icon: Gamepad2,
+    title: 'Metegol',
+    description: 'Clásico que nunca falla para todas las edades.',
   },
   {
     icon: Target,
@@ -110,7 +116,7 @@ const spaceFeatures = [
   },
 ]
 
-const galleryImages = Array.from({ length: 16 }).map((_, i) => ({
+const galleryImages = Array.from({ length: 17 }).map((_, i) => ({
   id: i + 1,
   src: `/images/our-space/${i + 1}.webp`,
   alt: `Nuestro Espacio - Imagen ${i + 1}`
