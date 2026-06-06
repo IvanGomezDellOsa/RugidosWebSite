@@ -18,7 +18,7 @@ const bebasNeue = Bebas_Neue({
 
 export const metadata: Metadata = {
   title: 'Rugidos Fiestas Tandil',
-  description: 'Salón de fiestas infantiles en Tandil para cumpleaños de hasta 8 años. Animación, pelotero, disco, fútbol, personajes en vivo, espejo mágico y mucho más. ¡Hacemos de tu evento una verdadera fiesta!',
+  description: 'Salón de fiestas infantiles en Tandil para cumpleaños de hasta 9 años. Animación, pelotero, disco, fútbol, personajes en vivo, espejo mágico y mucho más. ¡Hacemos de tu evento una verdadera fiesta!',
   keywords: ['fiestas infantiles', 'cumpleaños', 'Tandil', 'salón de fiestas', 'animación infantil', 'pelotero', 'Rugidos Fiestas'],
   authors: [{ name: 'Rugidos Fiestas' }],
   openGraph: {

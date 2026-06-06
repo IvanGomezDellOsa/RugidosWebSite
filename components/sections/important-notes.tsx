@@ -9,7 +9,7 @@ import { InfiniteMarquee } from '@/components/infinite-marquee'
 const importantNotes = [
   {
     icon: Calendar,
-    title: 'Cumpleaños hasta 8 años',
+    title: 'Cumpleaños hasta 9 años',
     description: 'Especialistas en fiestas para los más chicos',
     gradient: 'from-pink-500 to-rose-600',
   },
