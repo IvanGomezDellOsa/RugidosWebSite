@@ -104,7 +104,7 @@ const extras = [
       },
       {
         name: 'RugiTattoo Exclusivo (Premium)',
-        description: 'Tattoos personalizados con la carita del cumpleañero (caricatura o foto estilizada) o según la temática del festejo: Stitch, Spiderman, Dino, y más. Diseño exclusivo creado especialmente para el evento, aplicado durante la fiesta. Importante: requiere envío de foto con anticipación.',
+        description: 'Tattoos personalizados con la temática del festejo, el nombre del cumpleañero, su edad o el diseño que más te guste. Diseños exclusivos creados especialmente para el evento y aplicados durante la fiesta.',
       },
     ],
   },
