@@ -1,8 +1,9 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 
 interface ParallaxProps {
   children?: React.ReactNode
@@ -18,16 +19,8 @@ export function Parallax({
   className = '',
 }: ParallaxProps) {
   const ref = useRef(null)
-  const [isDesktop, setIsDesktop] = useState(false)
+  const isDesktop = useIsDesktop()
 
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-  
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],

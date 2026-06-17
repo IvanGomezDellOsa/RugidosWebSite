@@ -1,10 +1,11 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { Calendar, Users, Wallet, Check, Clock, Projector, Music, Utensils, Thermometer, PartyPopper, Gift, Droplets, Sparkles } from 'lucide-react'
 import { TiltCard } from '@/components/tilt-card'
 import { InfiniteMarquee } from '@/components/infinite-marquee'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 
 const importantNotes = [
   {
@@ -43,16 +44,8 @@ const services = [
 export function ImportantNotes() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-  const [isDesktop, setIsDesktop] = useState(false)
+  const isDesktop = useIsDesktop()
 
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-  
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start']
@@ -189,7 +182,7 @@ export function ImportantNotes() {
       </div>
 
       {/* Marquee decoration */}
-      <div className="absolute bottom-0 left-0 right-0 py-6 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none overflow-hidden">
+      <div className="relative mt-16 md:mt-0 md:absolute md:bottom-0 left-0 right-0 py-6 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none overflow-hidden">
         <InfiniteMarquee speed={4} pauseOnHover={false}>
           <div className="flex items-center text-white/20 text-2xl font-display tracking-widest">
             {[...Array(6)].map((_, i) => (

@@ -1,10 +1,12 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
+import Image from 'next/image'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Bot, Users, CakeSlice, Paintbrush, Popcorn, PartyPopper, UtensilsCrossed, Sparkles, GlassWater, Sticker, Camera, ImageIcon, ChevronDown, ChevronUp } from 'lucide-react'
 import { TiltCard } from '@/components/tilt-card'
 import { MagneticButton } from '@/components/magnetic-button'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 
 const extras = [
   {
@@ -114,15 +116,7 @@ export function Extras() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
   const [expandedCard, setExpandedCard] = useState<string | null>('rugitattoo')
-  const [isDesktop, setIsDesktop] = useState(false)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
+  const isDesktop = useIsDesktop()
 
   const featuredExtras = extras.filter(e => e.featured)
   const regularExtras = extras.filter(e => !e.featured)
@@ -218,11 +212,13 @@ export function Extras() {
                   </div>
 
                   <div className="relative mt-6 aspect-square rounded-xl overflow-hidden glass">
-                    <img 
-                      src={`/images/extras/${extra.id}.webp`} 
+                    <Image
+                      src={`/images/extras/${extra.id}.webp`}
                       alt={extra.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
                       loading="lazy"
-                      className="w-full h-full object-cover"
+                      className="object-cover"
                     />
                   </div>
                 </div>
@@ -298,12 +294,14 @@ export function Extras() {
                   {/* Image placeholder(s) */}
                   <div className={`mt-4 grid gap-2 ${extra.images === 2 ? 'grid-cols-2' : 'grid-cols-1'}`}>
                     {Array.from({ length: extra.images }).map((_, i) => (
-                      <div key={i} className="aspect-square rounded-lg overflow-hidden bg-white/5">
-                        <img 
-                          src={extra.images === 1 ? `/images/extras/${extra.id}.webp` : `/images/extras/${extra.id}-${i+1}.webp`} 
+                      <div key={i} className="relative aspect-square rounded-lg overflow-hidden bg-white/5">
+                        <Image
+                          src={extra.images === 1 ? `/images/extras/${extra.id}.webp` : `/images/extras/${extra.id}-${i+1}.webp`}
                           alt={`${extra.title} ${i+1}`}
+                          fill
+                          sizes="(max-width: 768px) 50vw, 25vw"
                           loading="lazy"
-                          className="w-full h-full object-cover"
+                          className="object-cover"
                         />
                       </div>
                     ))}

@@ -1,7 +1,8 @@
 'use client'
 
-import { useRef, useState, useEffect, ReactNode } from 'react'
+import { useRef, useState, ReactNode } from 'react'
 import { motion } from 'framer-motion'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 
 interface TiltCardProps {
   children: ReactNode
@@ -14,15 +15,7 @@ export function TiltCard({ children, className = '', glareEnabled = true }: Tilt
   const [rotateX, setRotateX] = useState(0)
   const [rotateY, setRotateY] = useState(0)
   const [glarePosition, setGlarePosition] = useState({ x: 50, y: 50 })
-  const [isDesktop, setIsDesktop] = useState(false)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
+  const isDesktop = useIsDesktop()
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current || !isDesktop) return

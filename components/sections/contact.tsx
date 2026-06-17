@@ -1,25 +1,19 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
+import Image from 'next/image'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { MapPin, Phone, Instagram, Facebook, ImageIcon, ExternalLink } from 'lucide-react'
 import { TiltCard } from '@/components/tilt-card'
 import { MagneticButton } from '@/components/magnetic-button'
 import { RevealText } from '@/components/reveal-text'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 
 export function Contact() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-  const [isDesktop, setIsDesktop] = useState(false)
+  const isDesktop = useIsDesktop()
 
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-  
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start']
@@ -208,11 +202,13 @@ export function Contact() {
                         <source src={item.src} type="video/mp4" />
                       </video>
                     ) : (
-                      <img 
-                        src={item.type === 'video' ? '/images/instagram/1_instagram_mobile.webp' : item.src} 
-                        alt="Instagram Post" 
+                      <Image
+                        src={item.type === 'video' ? '/images/instagram/1_instagram_mobile.webp' : item.src}
+                        alt="Instagram Post"
+                        fill
+                        sizes="(max-width: 1024px) 33vw, 130px"
                         loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     )}
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">

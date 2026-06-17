@@ -1,7 +1,8 @@
 'use client'
 
-import { useRef, useState, useEffect, ReactNode } from 'react'
+import { useRef, useState, ReactNode } from 'react'
 import { motion } from 'framer-motion'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 
 interface MagneticButtonProps {
   children: ReactNode
@@ -12,15 +13,7 @@ interface MagneticButtonProps {
 export function MagneticButton({ children, className = '', strength = 0.3 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [isDesktop, setIsDesktop] = useState(false)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
+  const isDesktop = useIsDesktop()
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current || !isDesktop) return

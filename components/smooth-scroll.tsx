@@ -1,22 +1,15 @@
 'use client'
 
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode } from 'react'
 import { ReactLenis } from 'lenis/react'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 
 interface SmoothScrollProps {
   children: ReactNode
 }
 
 export function SmoothScroll({ children }: SmoothScrollProps) {
-  const [isDesktop, setIsDesktop] = useState(false)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
+  const isDesktop = useIsDesktop()
 
   if (!isDesktop) return <>{children}</>
 

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Instagram, Facebook, MapPin, Phone } from 'lucide-react'
 import { MagneticButton } from '@/components/magnetic-button'
@@ -36,9 +37,11 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <img
+              <Image
                 src="/logo_rugidos.webp"
                 alt="Rugidos Fiestas"
+                width={64}
+                height={64}
                 className="h-16 w-16 object-contain"
               />
               <div>

@@ -13,7 +13,7 @@ export function WhatsAppButton() {
       setIsVisible(window.scrollY > 300)
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
 
     return () => {

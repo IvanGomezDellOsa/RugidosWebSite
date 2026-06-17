@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { MagneticButton } from './magnetic-button'
@@ -21,7 +22,7 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -45,9 +46,12 @@ export function Navbar() {
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 400 }}
           >
-            <img 
+            <Image
               src="/logo_rugidos.webp"
               alt="Rugidos Fiestas"
+              width={48}
+              height={48}
+              priority
               className="h-12 w-12 object-contain hidden md:block"
             />
             <span className="font-display text-2xl tracking-wider text-white hidden sm:block">
@@ -56,7 +60,7 @@ export function Navbar() {
           </motion.a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item, index) => (
               <MagneticButton key={item.href} strength={0.2}>
                 <motion.a
@@ -85,7 +89,8 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="xl:hidden relative z-10 p-2 text-white"
+            className="lg:hidden relative z-10 p-2 text-white"
+            aria-label="Abrir menú"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -96,7 +101,7 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 xl:hidden"
+            className="fixed inset-0 z-40 lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

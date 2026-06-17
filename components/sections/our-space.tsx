@@ -1,7 +1,9 @@
 'use client'
 
 import { useRef, useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 import { 
   Rocket,
   Smile,
@@ -128,28 +130,49 @@ export function OurSpace() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
-  const [isDesktop, setIsDesktop] = useState(false)
+  const isDesktop = useIsDesktop()
 
+  // 3 imágenes por slide en desktop, 1 en mobile.
+  const itemsPerSlide = isDesktop ? 3 : 1
+  const slideCount = Math.ceil(galleryImages.length / itemsPerSlide)
+
+  // Al cambiar de breakpoint, el slide actual puede quedar fuera de rango.
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
+    setCurrentSlide((prev) => Math.min(prev, slideCount - 1))
+  }, [slideCount])
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.ceil(galleryImages.length / 3))
+    setCurrentSlide((prev) => (prev + 1) % slideCount)
   }
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + Math.ceil(galleryImages.length / 3)) % Math.ceil(galleryImages.length / 3))
+    setCurrentSlide((prev) => (prev - 1 + slideCount) % slideCount)
   }
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index)
     setLightboxOpen(true)
   }
+
+  // Navegación por teclado y bloqueo de scroll del body mientras el lightbox está abierto.
+  useEffect(() => {
+    if (!lightboxOpen) return
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxOpen(false)
+      if (e.key === 'ArrowRight') setLightboxIndex((prev) => (prev + 1) % galleryImages.length)
+      if (e.key === 'ArrowLeft') setLightboxIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+    }
+
+    window.addEventListener('keydown', handleKey)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      window.removeEventListener('keydown', handleKey)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [lightboxOpen])
 
   return (
     <section
@@ -198,11 +221,11 @@ export function OurSpace() {
               animate={{ x: `-${currentSlide * 100}%` }}
               transition={{ duration: 0 }}
             >
-              {/* Carousel slides - 3 images per slide on desktop */}
-              {Array.from({ length: Math.ceil(galleryImages.length / 3) }).map((_, slideIndex) => (
+              {/* Carousel slides - 3 images per slide on desktop, 1 on mobile */}
+              {Array.from({ length: slideCount }).map((_, slideIndex) => (
                 <div key={slideIndex} className="flex-shrink-0 w-full grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {galleryImages.slice(slideIndex * 3, slideIndex * 3 + 3).map((image, imgIndex) => {
-                    const actualIndex = slideIndex * 3 + imgIndex
+                  {galleryImages.slice(slideIndex * itemsPerSlide, slideIndex * itemsPerSlide + itemsPerSlide).map((image, imgIndex) => {
+                    const actualIndex = slideIndex * itemsPerSlide + imgIndex
                     return isDesktop ? (
                       <motion.div
                         key={image.id}
@@ -210,11 +233,13 @@ export function OurSpace() {
                         whileHover={{ scale: 1.02 }}
                         onClick={() => openLightbox(actualIndex)}
                       >
-                        <img 
-                          src={image.src} 
+                        <Image
+                          src={image.src}
                           alt={image.alt}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
                           loading="lazy"
-                          className="w-full h-full object-cover"
+                          className="object-cover"
                         />
                         <div className="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                           <span className="text-white font-semibold text-lg">Ver imagen</span>
@@ -226,11 +251,13 @@ export function OurSpace() {
                         className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer"
                         onClick={() => openLightbox(actualIndex)}
                       >
-                        <img 
-                          src={image.src} 
+                        <Image
+                          src={image.src}
                           alt={image.alt}
+                          fill
+                          sizes="100vw"
                           loading="lazy"
-                          className="w-full h-full object-cover"
+                          className="object-cover"
                         />
                       </div>
                     )
@@ -265,8 +292,8 @@ export function OurSpace() {
               </motion.button>
 
               {/* Dots indicator */}
-              <div className="flex justify-center gap-2 mt-6">
-                {Array.from({ length: Math.ceil(galleryImages.length / 3) }).map((_, i) => (
+              <div className="flex justify-center gap-2 mt-6 flex-wrap">
+                {Array.from({ length: slideCount }).map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setCurrentSlide(i)}
@@ -348,14 +375,15 @@ export function OurSpace() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="max-w-5xl w-full aspect-video rounded-2xl overflow-hidden"
+              className="relative max-w-5xl w-full aspect-video rounded-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <img 
-                src={galleryImages[lightboxIndex]?.src} 
+              <Image
+                src={galleryImages[lightboxIndex]?.src}
                 alt={galleryImages[lightboxIndex]?.alt}
-                loading="lazy"
-                className="w-full h-full object-contain bg-black/50"
+                fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-contain bg-black/50"
               />
             </motion.div>
 
@@ -378,15 +406,17 @@ export function OurSpace() {
                     e.stopPropagation()
                     setLightboxIndex(i)
                   }}
-                  className={`flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${
+                  className={`relative flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${
                     i === lightboxIndex ? 'border-accent scale-110' : 'border-transparent opacity-50 hover:opacity-100'
                   }`}
                 >
-                  <img 
-                    src={image.src} 
+                  <Image
+                    src={image.src}
                     alt={`Miniatura ${i + 1}`}
+                    fill
+                    sizes="64px"
                     loading="lazy"
-                    className="w-full h-full object-cover"
+                    className="object-cover"
                   />
                 </button>
               ))}

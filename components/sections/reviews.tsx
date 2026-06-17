@@ -1,10 +1,12 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { Star, Quote, ExternalLink, Play, Pause } from 'lucide-react'
 import { InfiniteMarquee } from '@/components/infinite-marquee'
 import { TiltCard } from '@/components/tilt-card'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 
 // Testimonios reales de clientes seleccionados.
 const sampleReviews = [
@@ -121,15 +123,7 @@ const sampleReviews = [
 export function Reviews() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-  const [isDesktop, setIsDesktop] = useState(false)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
+  const isDesktop = useIsDesktop()
   const [isPaused, setIsPaused] = useState(false)
 
   return (
@@ -289,12 +283,12 @@ export function Reviews() {
 
 function ReviewCard({ review }: { review: typeof sampleReviews[0] }) {
   return (
-    <TiltCard className="w-[400px] flex-shrink-0">
+    <TiltCard className="w-[85vw] max-w-[400px] flex-shrink-0">
       <div className="block h-full group">
         <div className="glass rounded-2xl p-6 h-full flex flex-col group-hover:bg-white/[0.08] transition-colors relative overflow-hidden">
           {/* Header con foto */}
           <div className="flex items-center gap-4 mb-4">
-            <img src={review.photo} alt={review.name} loading="lazy" className="w-12 h-12 rounded-full object-cover border border-white/10" />
+            <Image src={review.photo} alt={review.name} width={48} height={48} loading="lazy" className="w-12 h-12 rounded-full object-cover border border-white/10" />
             <div className="flex-1">
               <p className="font-semibold text-white leading-tight">{review.name}</p>
               <p className="text-xs text-white/50">{review.date}</p>

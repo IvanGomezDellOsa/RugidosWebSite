@@ -1,23 +1,17 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { MagneticButton } from '@/components/magnetic-button'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 
 
 export function Hero() {
   const containerRef = useRef(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isDesktop, setIsDesktop] = useState(false)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
+  const isDesktop = useIsDesktop()
 
   useEffect(() => {
     if (videoRef.current) {
@@ -112,10 +106,12 @@ export function Hero() {
                 />
               </>
             )}
-            <img
+            <Image
               src="/logo_rugidos.webp"
               alt="Rugidos Fiestas"
-              fetchPriority="high"
+              width={176}
+              height={176}
+              priority
               className="relative h-36 w-36 md:h-40 md:w-40 xl:h-44 xl:w-44 object-contain drop-shadow-2xl"
             />
           </div>
