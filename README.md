@@ -1,3 +1,5 @@
+[Español](README.md) | [English](README.en.md)
+
 # RugidosWebSite — Sitio Web Comercial
 
 Rediseño completo de la plataforma web para **Rugidos Fiestas Tandil**. Sucesor directo de la ([Ver versión anterior](https://github.com/IvanGomezDellOsa/RugidosWebSite-2023-Legacy)), construido desde cero con un stack moderno orientado a performance y experiencia visual.
