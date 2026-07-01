@@ -3,6 +3,7 @@ import { Poppins, Bebas_Neue } from 'next/font/google'
 import './globals.css'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
+import { MailPopover } from '@/components/mail-popover'
 
 const poppins = Poppins({ 
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
       </head>
       <body className={`${poppins.variable} ${bebasNeue.variable} font-sans antialiased bg-background text-foreground`}>
         {children}
+        <MailPopover />
         <Analytics />
         <SpeedInsights />
       </body>

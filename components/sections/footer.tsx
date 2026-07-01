@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Instagram, Facebook, MapPin, Phone } from 'lucide-react'
+import { Instagram, Facebook, MapPin, Phone, Mail } from 'lucide-react'
 import { MagneticButton } from '@/components/magnetic-button'
 
 const footerLinks = [
@@ -162,10 +162,19 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 py-8 text-center">
+        <div className="border-t border-white/10 py-8 flex flex-wrap items-center justify-center gap-3 text-center">
           <p className="text-white/60 text-sm font-medium tracking-wide">
-            ¿Querés tu propia página web? Contactame en: <span className="text-white">ivangomezdellosa@gmail.com</span>
+            ¿Querés tu propia página web?
           </p>
+          <MagneticButton strength={0.3}>
+            <a
+              href="mailto:ivangomezdellosa@gmail.com?subject=Consulta%20sobre%20p%C3%A1gina%20web"
+              className="group inline-flex items-center gap-1.5 glass rounded-full px-4 py-1.5 text-white/80 text-sm font-semibold hover:border-accent/40 hover:text-accent transition-colors"
+            >
+              <Mail className="w-3.5 h-3.5 text-accent group-hover:text-accent transition-colors" />
+              Contactame
+            </a>
+          </MagneticButton>
         </div>
       </div>
     </footer>
