@@ -118,7 +118,7 @@ const spaceFeatures = [
   },
 ]
 
-const galleryImages = Array.from({ length: 17 }).map((_, i) => ({
+const galleryImages = Array.from({ length: 18 }).map((_, i) => ({
   id: i + 1,
   src: `/images/our-space/${i + 1}.webp`,
   alt: `Nuestro Espacio - Imagen ${i + 1}`
@@ -130,6 +130,7 @@ export function OurSpace() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+  const closeBtnRef = useRef<HTMLButtonElement>(null)
   const isDesktop = useIsDesktop()
 
   // 3 imágenes por slide en desktop, 1 en mobile.
@@ -167,6 +168,7 @@ export function OurSpace() {
     window.addEventListener('keydown', handleKey)
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
+    closeBtnRef.current?.focus()
 
     return () => {
       window.removeEventListener('keydown', handleKey)
@@ -216,10 +218,12 @@ export function OurSpace() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="relative overflow-hidden rounded-3xl">
+            {/* Sin gap entre slides: el translate de -100% por slide no contempla
+                el gap y acumulaba 16px de desfase por cada slide. */}
             <motion.div
-              className="flex gap-4"
+              className="flex"
               animate={{ x: `-${currentSlide * 100}%` }}
-              transition={{ duration: 0 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
             >
               {/* Carousel slides - 3 images per slide on desktop, 1 on mobile */}
               {Array.from({ length: slideCount }).map((_, slideIndex) => (
@@ -272,6 +276,7 @@ export function OurSpace() {
             <>
               <motion.button
                 onClick={prevSlide}
+                aria-label="Imágenes anteriores"
                 className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-black/50 backdrop-blur-md border border-white/50 flex items-center justify-center text-white hover:bg-accent hover:border-accent transition-colors shadow-[0_8px_32px_rgba(0,0,0,0.5)] z-10"
                 animate={isInView ? { scale: [1, 1.05, 1], boxShadow: ["0px 0px 0px rgba(255,255,255,0)", "0px 0px 20px rgba(255,255,255,0.2)", "0px 0px 0px rgba(255,255,255,0)"] } : {}}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
@@ -282,6 +287,7 @@ export function OurSpace() {
               </motion.button>
               <motion.button
                 onClick={nextSlide}
+                aria-label="Imágenes siguientes"
                 className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-black/50 backdrop-blur-md border border-white/50 flex items-center justify-center text-white hover:bg-accent hover:border-accent transition-colors shadow-[0_8px_32px_rgba(0,0,0,0.5)] z-10"
                 animate={isInView ? { scale: [1, 1.05, 1], boxShadow: ["0px 0px 0px rgba(255,255,255,0)", "0px 0px 20px rgba(255,255,255,0.2)", "0px 0px 0px rgba(255,255,255,0)"] } : {}}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
@@ -297,6 +303,8 @@ export function OurSpace() {
                   <button
                     key={i}
                     onClick={() => setCurrentSlide(i)}
+                    aria-label={`Ir al grupo de imágenes ${i + 1} de ${slideCount}`}
+                    aria-current={i === currentSlide}
                     className={`w-2 h-2 rounded-full transition-all ${
                       i === currentSlide ? 'w-8 bg-accent' : 'bg-white/30 hover:bg-white/50'
                     }`}
@@ -352,8 +360,13 @@ export function OurSpace() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightboxOpen(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Galería de imágenes de Nuestro Espacio"
           >
             <button
+              ref={closeBtnRef}
+              aria-label="Cerrar galería"
               className="absolute top-6 right-6 w-12 h-12 rounded-full glass flex items-center justify-center text-white hover:bg-white/20 transition-colors"
               onClick={() => setLightboxOpen(false)}
             >
@@ -361,6 +374,7 @@ export function OurSpace() {
             </button>
 
             <button
+              aria-label="Imagen anterior"
               className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass flex items-center justify-center text-white hover:bg-white/20 transition-colors"
               onClick={(e) => {
                 e.stopPropagation()
@@ -388,6 +402,7 @@ export function OurSpace() {
             </motion.div>
 
             <button
+              aria-label="Imagen siguiente"
               className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass flex items-center justify-center text-white hover:bg-white/20 transition-colors"
               onClick={(e) => {
                 e.stopPropagation()
@@ -402,6 +417,8 @@ export function OurSpace() {
               {galleryImages.map((image, i) => (
                 <button
                   key={image.id}
+                  aria-label={`Ver imagen ${i + 1} de ${galleryImages.length}`}
+                  aria-current={i === lightboxIndex}
                   onClick={(e) => {
                     e.stopPropagation()
                     setLightboxIndex(i)

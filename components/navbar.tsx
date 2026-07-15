@@ -10,6 +10,7 @@ const navItems = [
   { label: '¿Por qué elegirnos?', href: '#por-que-elegirnos' },
   { label: 'Nuestro espacio', href: '#nuestro-espacio' },
   { label: 'Servicios Adicionales', href: '#extras' },
+  { label: 'Academia de Estrellas', href: '#academia-estrellas', badge: 'Nuevo' },
   { label: 'Reseñas', href: '#resenas' },
   { label: 'Contacto', href: '#contacto' },
 ]
@@ -59,18 +60,24 @@ export function Navbar() {
             </span>
           </motion.a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Desktop Navigation: visible recién en xl; entre 1024 y ~1200px los
+              labels no entran en una línea y se rompían en dos. */}
+          <nav className="hidden xl:flex items-center gap-1">
             {navItems.map((item, index) => (
               <MagneticButton key={item.href} strength={0.2}>
                 <motion.a
                   href={item.href}
-                  className="relative px-4 py-2 text-sm text-white/70 hover:text-white transition-colors group"
+                  className="relative px-4 py-2 text-sm whitespace-nowrap text-white/70 hover:text-white transition-colors group"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index }}
                 >
                   {item.label}
+                  {item.badge && (
+                    <span className="ml-1.5 align-middle text-[10px] font-bold uppercase tracking-wide text-accent">
+                      {item.badge}
+                    </span>
+                  )}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-accent to-primary group-hover:w-3/4 transition-all duration-300" />
                 </motion.a>
               </MagneticButton>
@@ -89,8 +96,9 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden relative z-10 p-2 text-white"
-            aria-label="Abrir menú"
+            className="xl:hidden relative z-10 p-2 text-white"
+            aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -101,7 +109,7 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 lg:hidden"
+            className="fixed inset-0 z-40 xl:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -112,7 +120,7 @@ export function Navbar() {
             />
             
             <motion.nav
-              className="absolute right-0 top-0 bottom-0 w-80 max-w-full bg-card p-8 pt-24 flex flex-col"
+              className="absolute right-0 top-0 bottom-0 w-80 max-w-full bg-card p-8 pt-24 flex flex-col overflow-y-auto"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -129,9 +137,14 @@ export function Navbar() {
                   transition={{ delay: 0.1 * index }}
                 >
                   {item.label}
+                  {item.badge && (
+                    <span className="ml-2 text-xs font-bold uppercase tracking-wide text-accent align-middle">
+                      {item.badge}
+                    </span>
+                  )}
                 </motion.a>
               ))}
-              
+
               <motion.a
                 href="https://wa.me/5492494306222"
                 target="_blank"

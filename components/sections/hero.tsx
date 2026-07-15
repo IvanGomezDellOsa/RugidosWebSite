@@ -199,9 +199,10 @@ export function Hero() {
         )}
       </motion.div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator: oculto en viewports bajos (notebooks con escala 125-150%),
+          donde se superpone con el CTA de WhatsApp. */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 [@media(max-height:700px)]:hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}

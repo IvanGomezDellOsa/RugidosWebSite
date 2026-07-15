@@ -237,11 +237,15 @@ export function Extras() {
               transition={{ duration: 0.5, delay: 0.5 + index * 0.08 }}
             >
               <TiltCard className="h-full">
-                <div 
-                  className={`glass rounded-xl p-6 h-full group hover:bg-white/[0.06] transition-all duration-300 cursor-pointer ${
-                    extra.id === 'rugitattoo' ? 'md:col-span-2' : ''
+                <div
+                  className={`glass rounded-xl p-6 h-full group hover:bg-white/[0.06] transition-all duration-300 ${
+                    extra.options ? 'cursor-pointer' : ''
                   }`}
-                  onClick={() => setExpandedCard(expandedCard === extra.id ? null : extra.id)}
+                  onClick={
+                    extra.options
+                      ? () => setExpandedCard(expandedCard === extra.id ? null : extra.id)
+                      : undefined
+                  }
                 >
                   <div className="flex items-start gap-4 mb-4">
                     <motion.div
@@ -257,7 +261,16 @@ export function Extras() {
                       <h3 className="text-xl font-semibold text-white mt-1">{extra.title}</h3>
                     </div>
                     {extra.options && (
-                      <button className="text-white/50 hover:text-white transition-colors">
+                      <button
+                        aria-expanded={expandedCard === extra.id}
+                        aria-controls={`extra-options-${extra.id}`}
+                        aria-label={`${expandedCard === extra.id ? 'Ocultar' : 'Ver'} opciones de ${extra.title}`}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setExpandedCard(expandedCard === extra.id ? null : extra.id)
+                        }}
+                        className="text-white/50 hover:text-white transition-colors"
+                      >
                         {expandedCard === extra.id ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                       </button>
                     )}
@@ -268,6 +281,7 @@ export function Extras() {
                     <AnimatePresence>
                       {expandedCard === extra.id && (
                         <motion.div
+                          id={`extra-options-${extra.id}`}
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}

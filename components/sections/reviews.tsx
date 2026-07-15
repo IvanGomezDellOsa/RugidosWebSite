@@ -1,19 +1,29 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { Star, Quote, ExternalLink, Play, Pause } from 'lucide-react'
 import { InfiniteMarquee } from '@/components/infinite-marquee'
 import { TiltCard } from '@/components/tilt-card'
 import { useIsDesktop } from '@/hooks/use-is-desktop'
 
+// Avatares con iniciales generados localmente (antes dependían de ui-avatars.com).
+const AVATAR_COLORS = ['#0D8ABC', '#BE185D', '#047857', '#1D4ED8', '#A21CAF', '#B45309']
+
+function getInitials(name: string) {
+  return name
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((word) => word[0].toUpperCase())
+    .join('')
+}
+
 // Testimonios reales de clientes seleccionados.
 const sampleReviews = [
   {
     id: 1,
     name: 'Laura Tuyaret',
-    photo: 'https://ui-avatars.com/api/?name=Laura+Tuyaret&background=0D8ABC&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Celebramos el cumpleaños de 8 de mi hijo. La atención fue muy cálida, estuvieron en cada detalle y atentas a todo lo que sucedía. Además del castillo inflable y la canchita, el cumple contó con unos momentos destacados que lo hicieron sentir protagonista en su día y nos sorprendieron a todos los presentes. ¡Lo súper recomendamos!',
@@ -22,7 +32,6 @@ const sampleReviews = [
   {
     id: 2,
     name: 'Celeste Ortiz',
-    photo: 'https://ui-avatars.com/api/?name=Celeste+Ortiz&background=BE185D&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Es el mejor pelotero de Tandil! El espacio es muy lindo pero la atención y la dedicación para hacer sentir especial al cumpleañero es lo mejor. Recomendable al 100%',
@@ -31,7 +40,6 @@ const sampleReviews = [
   {
     id: 3,
     name: 'Luz Quiñones',
-    photo: 'https://ui-avatars.com/api/?name=Luz+Quiñones&background=047857&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Buenisima la atención y muy bien las opciones que ofrecen para completar la experiencia como la fiesta fluo y los adicionales gracias por todo estuvo hermoso',
@@ -40,7 +48,6 @@ const sampleReviews = [
   {
     id: 4,
     name: 'maria falcon',
-    photo: 'https://ui-avatars.com/api/?name=maria+falcon&background=1D4ED8&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Gracias infinitas beni paso un cumple hermoso\nTodo muy bien organizado las chicas muy atentas a todos\nRecomiendo rugidos para que sus hijos tengan el mejor de los cumples\nGracias rugidos volveremos a seguir festejando 💞💝🎉',
@@ -49,7 +56,6 @@ const sampleReviews = [
   {
     id: 5,
     name: 'faby Aguilera',
-    photo: 'https://ui-avatars.com/api/?name=faby+Aguilera&background=A21CAF&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Hermoso!!! Como disfruto Jerónimo!!! Se volvió muy feliz!!!! Muchas gracias por toda la atención, por la calidad del personal, las sorpresas del lugar!!! Muy muy agradecidos!!! Mi hijo no para de recordar momentos!!!\nRecomendamos!!! Y volveremos!!!!',
@@ -58,7 +64,6 @@ const sampleReviews = [
   {
     id: 6,
     name: 'Erica Martinez Noya',
-    photo: 'https://ui-avatars.com/api/?name=Erica+Martinez+Noya&background=B45309&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Segundo año consecutivo festejando en RUGIDOS. La atención es excelente. Las chicas están atentas a los niños y siempre muy muy buena onda!!!! Lo super recomiendo!!!',
@@ -67,7 +72,6 @@ const sampleReviews = [
   {
     id: 7,
     name: 'Perla D ́Alessandro',
-    photo: 'https://ui-avatars.com/api/?name=Perla+D+Alessandro&background=0D8ABC&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'El mejor salón para eventos infantiles de Tandil, por lejos. Un 10 la atención, un 10 los juegos, un 10 los extras que se pueden agregar. Mí hijo se fue feliz, y nosotros encantados con la experiencia. Lo recomiendo con los ojos cerrados... Gracias por hacer del cumple de mí hijo, un momento tan especial ❤️',
@@ -76,7 +80,6 @@ const sampleReviews = [
   {
     id: 8,
     name: 'Gabriela Botto',
-    photo: 'https://ui-avatars.com/api/?name=Gabriela+Botto&background=BE185D&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Excelente atención y predisposición. Elegimos Rugidos por cuarta vez!, lo recomendamos!',
@@ -85,7 +88,6 @@ const sampleReviews = [
   {
     id: 9,
     name: 'Noelia Funes',
-    photo: 'https://ui-avatars.com/api/?name=Noelia+Funes&background=047857&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Excelente! Mí hijo lo eligió para festejar su cumple xq le encantó cuando fue al cumple de un amiguito!!! Nos atendieron muy bien y cuidaron y jugaron con los niños/así. Lo súper recomendamos',
@@ -94,7 +96,6 @@ const sampleReviews = [
   {
     id: 10,
     name: 'Daniela Palencia',
-    photo: 'https://ui-avatars.com/api/?name=Daniela+Palencia&background=1D4ED8&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Es el primer salon que nos toca con una excelente y calida atención! Super recomendable Valentina festejo sus 4 años y la paso super bien y feliz! Gracias!',
@@ -103,7 +104,6 @@ const sampleReviews = [
   {
     id: 11,
     name: 'Rocio Verde',
-    photo: 'https://ui-avatars.com/api/?name=Rocio+Verde&background=A21CAF&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Hermosísima experiencia! Las chicas son súper amables y cuidadosas con los niños. Están muy atentas a los juegos. En todo momento están atentas también, al servicio de las mesas. Nunca faltó comida o bebida en las mesas. Son muy amables!',
@@ -112,7 +112,6 @@ const sampleReviews = [
   {
     id: 12,
     name: 'Maria Eugenia Campos',
-    photo: 'https://ui-avatars.com/api/?name=Maria+Eugenia+Campos&background=B45309&color=fff',
     url: 'https://share.google/vjk4hSErdDtEjDv8b',
     rating: 5,
     text: 'Gracias por permitirnos vivir un cumple inolvidable, todo excelente. El lugar, la calefacción, la atención, la organización, son geniales estamos súper agradecidos y contentos.',
@@ -288,7 +287,13 @@ function ReviewCard({ review }: { review: typeof sampleReviews[0] }) {
         <div className="glass rounded-2xl p-6 h-full flex flex-col group-hover:bg-white/[0.08] transition-colors relative overflow-hidden">
           {/* Header con foto */}
           <div className="flex items-center gap-4 mb-4">
-            <Image src={review.photo} alt={review.name} width={48} height={48} loading="lazy" className="w-12 h-12 rounded-full object-cover border border-white/10" />
+            <div
+              aria-hidden="true"
+              className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center border border-white/10 text-white font-semibold text-sm"
+              style={{ backgroundColor: AVATAR_COLORS[(review.id - 1) % AVATAR_COLORS.length] }}
+            >
+              {getInitials(review.name)}
+            </div>
             <div className="flex-1">
               <p className="font-semibold text-white leading-tight">{review.name}</p>
               <p className="text-xs text-white/50">{review.date}</p>

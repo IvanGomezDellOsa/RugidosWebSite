@@ -46,6 +46,17 @@
     background: rgba(96, 4, 122, 0.6);
     color: white;
   }
+
+  /* Lenis (smooth scroll en desktop): desactiva el scroll-behavior nativo
+     mientras Lenis controla el scroll, para que los anchors no animen doble. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer utilities {
