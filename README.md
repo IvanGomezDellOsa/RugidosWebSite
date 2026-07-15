@@ -43,7 +43,7 @@ Rediseño completo de la plataforma web para **Rugidos Fiestas Tandil**. Sucesor
 - Marquee infinito decorativo en el footer de sección
 
 **Nuestro espacio**
-- Galería con carrusel de 16 imágenes (3 por slide en desktop)
+- Galería con carrusel de 18 imágenes (3 por slide en desktop)
 - Lightbox completo con navegación por teclado y miniaturas
 - Grid tipo bento de 16 características del salón
 
@@ -51,6 +51,12 @@ Rediseño completo de la plataforma web para **Rugidos Fiestas Tandil**. Sucesor
 - 3 cards destacadas de gran tamaño (Rugibot, Fiesta Flúor, Espejo Mágico)
 - Grid de 8 extras regulares con acordeón animado
 - RugiTattoo Point con opciones colapsables
+
+**Academia de Estrellas**
+- Reveal interactivo por hover en desktop: máscara radial con Framer Motion que sigue el cursor y revela el look "superstar" bajo el look casual
+- Slider de comparación "antes/después" en mobile con drag, operable por teclado (`role="slider"`, flechas, Home/End) y `aria-valuenow` en vivo
+- Micro-animación idle (respiración + órbita del punto de foco) para invitar a interactuar, con estrellitas generadas dinámicamente sobre el cursor
+- Detección real de capacidad de hover (`hover: hover` + `pointer: fine`) en vez de un breakpoint de ancho, para no romper la experiencia en tablets táctiles
 
 **Reseñas**
 - Resumen de Google Reviews (4.9/5, +192 opiniones)
@@ -85,6 +91,7 @@ Rediseño completo de la plataforma web para **Rugidos Fiestas Tandil**. Sucesor
 - `SmoothScroll` — wrapper global de Lenis; activo solo en desktop
 - `Hero` — renderizado condicional que elimina animaciones de entrada en mobile para minimizar el LCP
 - `Instagram Feed` — sistema de fallback que sirve WebP estáticos optimizados en mobile en lugar de video, reduciendo la carga inicial
+- `useHasHover` — hook que detecta capacidad real de puntero fino con hover (mouse/trackpad), a diferencia de un breakpoint de ancho que confunde tablets táctiles con desktop
 
 ---
 

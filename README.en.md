@@ -43,7 +43,7 @@ Complete redesign of the web platform for **Rugidos Fiestas Tandil**. The direct
 - Decorative infinite marquee in the section footer
 
 **Our space**
-- Gallery with a carousel of 16 images (3 per slide on desktop)
+- Gallery with a carousel of 18 images (3 per slide on desktop)
 - Full lightbox with keyboard navigation and thumbnails
 - Bento-style grid of 16 features of the venue
 
@@ -51,6 +51,12 @@ Complete redesign of the web platform for **Rugidos Fiestas Tandil**. The direct
 - 3 large featured cards (Rugibot, Fiesta Flúor, Espejo Mágico)
 - Grid of 8 regular extras with an animated accordion
 - RugiTattoo Point with collapsible options
+
+**Star Academy**
+- Interactive hover reveal on desktop: a Framer Motion radial mask that follows the cursor and reveals the "superstar" look underneath the casual one
+- "Before/after" comparison slider on mobile with drag, keyboard-operable (`role="slider"`, arrow keys, Home/End) and live `aria-valuenow`
+- Idle micro-animation (breathing + orbit of the focus point) to invite interaction, with sparkles dynamically generated around the cursor
+- Real hover-capability detection (`hover: hover` + `pointer: fine`) instead of a width breakpoint, so the experience doesn't break on touch tablets
 
 **Reviews**
 - Google Reviews summary (4.9/5, +192 reviews)
@@ -85,6 +91,7 @@ Complete redesign of the web platform for **Rugidos Fiestas Tandil**. The direct
 - `SmoothScroll` — global Lenis wrapper; active only on desktop
 - `Hero` — conditional rendering that removes entry animations on mobile to minimize LCP
 - `Instagram Feed` — fallback system that serves optimized static WebP on mobile instead of video, reducing the initial load
+- `useHasHover` — hook that detects real fine-pointer hover capability (mouse/trackpad), unlike a width breakpoint that mistakes touch tablets for desktop
 
 ---
 
