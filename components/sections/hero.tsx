@@ -38,6 +38,18 @@ export function Hero() {
         {/* Mobile fallback gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-purple-900" />
 
+        {/* Póster (frame del video): en mobile es el fondo definitivo —una
+            imagen estática no cuesta GPU como el video— y en desktop tapa el
+            hueco mientras el video carga. */}
+        <Image
+          src="/images/hero-poster.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+
         {isDesktop && (
           <video
             ref={videoRef}

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import {
+  animate,
   motion,
   useInView,
   useMotionValue,
@@ -222,10 +223,37 @@ function RevealPortrait() {
 
 function CompareSlider() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(containerRef, { margin: '-100px' })
   const [width, setWidth] = useState(0)
   const [ariaPercent, setAriaPercent] = useState(50)
+  const [hasInteracted, setHasInteracted] = useState(false)
   const x = useMotionValue(0)
   const prefersReducedMotion = useReducedMotion()
+
+  // useReducedMotion() devuelve null en el server y resuelve el valor real ya
+  // en el primer render del cliente, así que usarlo para decidir qué DOM
+  // renderizar (los anillos) rompe la hidratación. Se gatea con `mounted`
+  // (solo se vuelve true después del mount) para que SSR y el primer render
+  // del cliente coincidan siempre.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  // Demo automática: sin esto, en mobile el slider parece una foto fija sin
+  // ningún indicio de que se puede arrastrar (a diferencia del hover en
+  // desktop, que ya se explica solo con el movimiento idle). Se detiene apenas
+  // el usuario lo toca.
+  useEffect(() => {
+    if (!isInView || hasInteracted || prefersReducedMotion || width === 0) return
+    const center = width / 2
+    const offset = width * 0.16
+    const controls = animate(x, [center, center + offset, center - offset, center], {
+      duration: 3.2,
+      repeat: Infinity,
+      repeatDelay: 1.4,
+      ease: 'easeInOut',
+    })
+    return () => controls.stop()
+  }, [isInView, hasInteracted, prefersReducedMotion, width, x])
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -304,6 +332,8 @@ function CompareSlider() {
             : { bounceStiffness: 420, bounceDamping: 18 }
         }
         dragMomentum={false}
+        onPointerDown={() => setHasInteracted(true)}
+        onDragStart={() => setHasInteracted(true)}
         style={{ x }}
         role="slider"
         tabIndex={0}
@@ -316,8 +346,24 @@ function CompareSlider() {
         whileTap={{ scale: 1.1 }}
       >
         <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-white/70" />
-        <div className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full glass-strong border border-white/30 shadow-lg group-focus-visible:ring-2 group-focus-visible:ring-accent">
-          <MoveHorizontal className="w-4 h-4 text-white" />
+        <div className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2">
+          {mounted && !hasInteracted && !prefersReducedMotion && (
+            <>
+              <motion.span
+                className="absolute inset-0 rounded-full border border-white/50"
+                animate={{ scale: [1, 1.8], opacity: [0.7, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
+              />
+              <motion.span
+                className="absolute inset-0 rounded-full border border-white/50"
+                animate={{ scale: [1, 1.8], opacity: [0.7, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut', delay: 0.9 }}
+              />
+            </>
+          )}
+          <div className="relative flex h-10 w-10 items-center justify-center rounded-full glass-strong border border-white/30 shadow-lg group-focus-visible:ring-2 group-focus-visible:ring-accent">
+            <MoveHorizontal className="w-4 h-4 text-white" />
+          </div>
         </div>
       </motion.div>
 
@@ -374,10 +420,15 @@ export function AcademiaEstrellas() {
           >
             {canHover ? <RevealPortrait /> : <CompareSlider />}
 
-            {canHover && (
+            {canHover ? (
               <p className="mt-4 flex items-center justify-center gap-2 text-sm text-white/50">
                 <MousePointer2 className="w-4 h-4 text-accent" />
                 Pasá el mouse por encima de la foto
+              </p>
+            ) : (
+              <p className="mt-4 flex items-center justify-center gap-2 text-sm text-white/50">
+                <MoveHorizontal className="w-4 h-4 text-accent" />
+                Deslizá
               </p>
             )}
           </motion.div>
