@@ -118,7 +118,7 @@ const spaceFeatures = [
   },
 ]
 
-const galleryImages = Array.from({ length: 18 }).map((_, i) => ({
+const galleryImages = Array.from({ length: 19 }).map((_, i) => ({
   id: i + 1,
   src: `/images/our-space/${i + 1}.webp`,
   alt: `Nuestro Espacio - Imagen ${i + 1}`
