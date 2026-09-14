@@ -18,7 +18,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rugidosfiestas.com'),
+  metadataBase: new URL('https://www.rugidosfiestas.com.ar'),
   title: 'Rugidos Fiestas Tandil',
   description: 'Salón de fiestas infantiles en Tandil para cumpleaños de hasta 9 años. Animación, pelotero, disco, fútbol, personajes en vivo, espejo mágico y mucho más. ¡Hacemos de tu evento una verdadera fiesta!',
   keywords: ['fiestas infantiles', 'cumpleaños', 'Tandil', 'salón de fiestas', 'animación infantil', 'pelotero', 'Rugidos Fiestas'],
@@ -42,8 +42,8 @@ const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Rugidos Fiestas',
-  image: 'https://rugidosfiestas.com/logo_rugidos.webp',
-  url: 'https://rugidosfiestas.com',
+  image: 'https://www.rugidosfiestas.com.ar/logo_rugidos.webp',
+  url: 'https://www.rugidosfiestas.com.ar',
   telephone: '+5492494306222',
   address: {
     '@type': 'PostalAddress',
