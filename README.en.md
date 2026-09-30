@@ -43,9 +43,9 @@ Complete redesign of the web platform for **Rugidos Fiestas Tandil**. The direct
 - Decorative infinite marquee in the section footer
 
 **Our space**
-- Gallery with a carousel of 18 images (3 per slide on desktop)
+- Gallery with a carousel of 19 images (3 per slide on desktop)
 - Full lightbox with keyboard navigation and thumbnails
-- Bento-style grid of 16 features of the venue
+- Bento-style grid of 17 features of the venue
 
 **Additional services (Extras)**
 - 3 large featured cards (Rugibot, Fiesta Flúor, Espejo Mágico)
@@ -59,7 +59,7 @@ Complete redesign of the web platform for **Rugidos Fiestas Tandil**. The direct
 - Real hover-capability detection (`hover: hover` + `pointer: fine`) instead of a width breakpoint, so the experience doesn't break on touch tablets
 
 **Reviews**
-- Google Reviews summary (4.9/5, +192 reviews)
+- Google Reviews summary (4.9/5, +203 reviews)
 - Bidirectional double infinite marquee with pause on-hover
 - Manual pause/resume button
 - 12 real hardcoded reviews (no external widget)
@@ -97,6 +97,15 @@ Complete redesign of the web platform for **Rugidos Fiestas Tandil**. The direct
 
 ## ⚡ Performance & Asset Optimization
 
+### Lighthouse (production site)
+
+| Profile | Performance | Accessibility | Best Practices | SEO | LCP | CLS |
+|---------|:-----------:|:-------------:|:--------------:|:---:|:---:|:---:|
+| Desktop | 99 | 96 | 100 | 100 | 0.8 s | 0 |
+| Mobile | 95 | 96 | 100 | 100 | 2.9 s | 0 |
+
+_Lighthouse 12, median of 3 runs per profile (September 2026)._
+
 ### Adaptive Rendering (Mobile-First)
 All heavy effects (Framer Motion hooks, parallax, glassmorphism, 3D tilt) are conditionally disabled on mobile via `matchMedia`, keeping a real 60fps during scroll.
 
@@ -109,7 +118,7 @@ All heavy effects (Framer Motion hooks, parallax, glassmorphism, 3D tilt) are co
 `backdrop-filter` disabled on mobile via a global media query, avoiding framerate drops on mid-range iOS/Android.
 
 ### Asset Pipeline
-- **Images**: Processed in batch with Node.js + Sharp: from ~16MB to less than 1.5MB (~90% reduction)
+- **Images**: Processed in batch with Node.js + Sharp: from ~15.6MB to ~1.8MB (~88% reduction)
 - **Videos**: Processed with FFmpeg: compression, cropping and conversion to `.webp`
 - **Widgets**: Instagram feed and Google reviews replaced with local content to eliminate external dependencies and CLS
 

@@ -43,9 +43,9 @@ Rediseño completo de la plataforma web para **Rugidos Fiestas Tandil**. Sucesor
 - Marquee infinito decorativo en el footer de sección
 
 **Nuestro espacio**
-- Galería con carrusel de 18 imágenes (3 por slide en desktop)
+- Galería con carrusel de 19 imágenes (3 por slide en desktop)
 - Lightbox completo con navegación por teclado y miniaturas
-- Grid tipo bento de 16 características del salón
+- Grid tipo bento de 17 características del salón
 
 **Servicios adicionales (Extras)**
 - 3 cards destacadas de gran tamaño (Rugibot, Fiesta Flúor, Espejo Mágico)
@@ -59,7 +59,7 @@ Rediseño completo de la plataforma web para **Rugidos Fiestas Tandil**. Sucesor
 - Detección real de capacidad de hover (`hover: hover` + `pointer: fine`) en vez de un breakpoint de ancho, para no romper la experiencia en tablets táctiles
 
 **Reseñas**
-- Resumen de Google Reviews (4.9/5, +192 opiniones)
+- Resumen de Google Reviews (4.9/5, +203 opiniones)
 - Doble marquee infinito bidireccional con pausa on-hover
 - Botón de pausa/reanudación manual
 - 12 reseñas reales hardcodeadas (sin widget externo)
@@ -97,6 +97,15 @@ Rediseño completo de la plataforma web para **Rugidos Fiestas Tandil**. Sucesor
 
 ## ⚡ Performance & Optimización de Assets
 
+### Lighthouse (sitio en producción)
+
+| Perfil | Performance | Accesibilidad | Buenas prácticas | SEO | LCP | CLS |
+|--------|:-----------:|:-------------:|:----------------:|:---:|:---:|:---:|
+| Desktop | 99 | 96 | 100 | 100 | 0.8 s | 0 |
+| Mobile | 95 | 96 | 100 | 100 | 2.9 s | 0 |
+
+_Lighthouse 12, mediana de 3 corridas por perfil (septiembre 2026)._
+
 ### Adaptive Rendering (Mobile-First)
 Todos los efectos pesados (hooks de Framer Motion, parallax, glassmorphism, tilt 3D) se desactivan condicionalmente en mobile via `matchMedia`, manteniendo 60fps reales durante el scroll.
 
@@ -109,7 +118,7 @@ Todos los efectos pesados (hooks de Framer Motion, parallax, glassmorphism, tilt
 `backdrop-filter` desactivado en mobile vía media query global, evitando drops de framerate en iOS/Android de gama media.
 
 ### Pipeline de Assets
-- **Imágenes**: Procesadas en batch con Node.js + Sharp: de ~16MB a menos de 1.5MB (~90% de reducción)
+- **Imágenes**: Procesadas en batch con Node.js + Sharp: de ~15.6MB a ~1.8MB (~88% de reducción)
 - **Videos**: Procesados con FFmpeg: compresión, recorte y conversión a `.webp`
 - **Widgets**: Feed de Instagram y reseñas de Google reemplazados por contenido local para eliminar dependencias externas y CLS
 
