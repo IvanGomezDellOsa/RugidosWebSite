@@ -2,9 +2,20 @@
 
 # RugidosWebSite — Sitio Web Comercial
 
-Rediseño completo de la plataforma web para **Rugidos Fiestas Tandil**. Sucesor directo de la ([Ver versión anterior](https://github.com/IvanGomezDellOsa/RugidosWebSite-2023-Legacy)), construido desde cero con un stack moderno orientado a performance y experiencia visual.
+Rediseño completo de la plataforma web para **Rugidos Fiestas Tandil**. Sucesor directo de la [versión de 2023](https://github.com/IvanGomezDellOsa/RugidosWebSite-2023-Legacy), construido desde cero con un stack moderno orientado a performance y experiencia visual.
 
 🌐 **Deploy en producción:** [rugidosfiestas.com.ar](https://rugidosfiestas.com.ar)
+
+---
+
+## 📊 Lighthouse (sitio en producción)
+
+| Perfil | Performance | Accesibilidad | Buenas prácticas | SEO | LCP | CLS |
+|--------|:-----------:|:-------------:|:----------------:|:---:|:---:|:---:|
+| Desktop | 99 | 96 | 100 | 100 | 0.8 s | 0 |
+| Mobile | 95 | 96 | 100 | 100 | 2.9 s | 0 |
+
+_Lighthouse 12, mediana de 3 corridas por perfil (septiembre 2026)._
 
 ---
 
@@ -97,15 +108,6 @@ Rediseño completo de la plataforma web para **Rugidos Fiestas Tandil**. Sucesor
 
 ## ⚡ Performance & Optimización de Assets
 
-### Lighthouse (sitio en producción)
-
-| Perfil | Performance | Accesibilidad | Buenas prácticas | SEO | LCP | CLS |
-|--------|:-----------:|:-------------:|:----------------:|:---:|:---:|:---:|
-| Desktop | 99 | 96 | 100 | 100 | 0.8 s | 0 |
-| Mobile | 95 | 96 | 100 | 100 | 2.9 s | 0 |
-
-_Lighthouse 12, mediana de 3 corridas por perfil (septiembre 2026)._
-
 ### Adaptive Rendering (Mobile-First)
 Todos los efectos pesados (hooks de Framer Motion, parallax, glassmorphism, tilt 3D) se desactivan condicionalmente en mobile via `matchMedia`, manteniendo 60fps reales durante el scroll.
 
@@ -134,6 +136,7 @@ Todos los efectos pesados (hooks de Framer Motion, parallax, glassmorphism, tilt
 
 **Iván Gómez Dell'Osa**
 
+- Web: [ivangomezdellosa.com.ar](https://www.ivangomezdellosa.com.ar)
 - Email: [ivangomezdellosa@gmail.com](mailto:ivangomezdellosa@gmail.com)
 - LinkedIn: [linkedin.com/in/ivangomezdellosa](https://www.linkedin.com/in/ivangomezdellosa/)
 - GitHub: [IvanGomezDellOsa](https://github.com/IvanGomezDellOsa)

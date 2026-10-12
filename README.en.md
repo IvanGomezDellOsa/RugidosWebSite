@@ -2,9 +2,20 @@
 
 # RugidosWebSite — Commercial Website
 
-Complete redesign of the web platform for **Rugidos Fiestas Tandil**. The direct successor to the ([See previous version](https://github.com/IvanGomezDellOsa/RugidosWebSite-2023-Legacy)), built from scratch with a modern stack focused on performance and visual experience.
+Complete redesign of the web platform for **Rugidos Fiestas Tandil**. The direct successor to the [2023 version](https://github.com/IvanGomezDellOsa/RugidosWebSite-2023-Legacy), built from scratch with a modern stack focused on performance and visual experience.
 
 🌐 **Production deploy:** [rugidosfiestas.com.ar](https://rugidosfiestas.com.ar)
+
+---
+
+## 📊 Lighthouse (production site)
+
+| Profile | Performance | Accessibility | Best Practices | SEO | LCP | CLS |
+|---------|:-----------:|:-------------:|:--------------:|:---:|:---:|:---:|
+| Desktop | 99 | 96 | 100 | 100 | 0.8 s | 0 |
+| Mobile | 95 | 96 | 100 | 100 | 2.9 s | 0 |
+
+_Lighthouse 12, median of 3 runs per profile (September 2026)._
 
 ---
 
@@ -97,15 +108,6 @@ Complete redesign of the web platform for **Rugidos Fiestas Tandil**. The direct
 
 ## ⚡ Performance & Asset Optimization
 
-### Lighthouse (production site)
-
-| Profile | Performance | Accessibility | Best Practices | SEO | LCP | CLS |
-|---------|:-----------:|:-------------:|:--------------:|:---:|:---:|:---:|
-| Desktop | 99 | 96 | 100 | 100 | 0.8 s | 0 |
-| Mobile | 95 | 96 | 100 | 100 | 2.9 s | 0 |
-
-_Lighthouse 12, median of 3 runs per profile (September 2026)._
-
 ### Adaptive Rendering (Mobile-First)
 All heavy effects (Framer Motion hooks, parallax, glassmorphism, 3D tilt) are conditionally disabled on mobile via `matchMedia`, keeping a real 60fps during scroll.
 
@@ -134,6 +136,7 @@ All heavy effects (Framer Motion hooks, parallax, glassmorphism, 3D tilt) are co
 
 **Iván Gómez Dell'Osa**
 
+- Web: [ivangomezdellosa.com.ar](https://www.ivangomezdellosa.com.ar)
 - Email: [ivangomezdellosa@gmail.com](mailto:ivangomezdellosa@gmail.com)
 - LinkedIn: [linkedin.com/in/ivangomezdellosa](https://www.linkedin.com/in/ivangomezdellosa/)
 - GitHub: [IvanGomezDellOsa](https://github.com/IvanGomezDellOsa)
