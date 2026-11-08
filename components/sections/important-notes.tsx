@@ -193,7 +193,7 @@ export function ImportantNotes() {
                 <span className="text-accent">*</span>
                 <span>+18 AÑOS</span>
                 <span className="text-accent">*</span>
-                <span>+7500 EVENTOS</span>
+                <span>+8500 EVENTOS</span>
                 <span className="text-accent">*</span>
               </div>
             ))}

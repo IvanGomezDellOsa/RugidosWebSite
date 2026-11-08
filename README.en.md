@@ -44,7 +44,7 @@ _Lighthouse 12, median of 3 runs per profile (September 2026)._
 - Animated scroll indicator
 
 **Why choose us?**
-- Animated counters with easeOutExpo easing (18 years, +7500 events)
+- Animated counters with easeOutExpo easing (18 years, +8500 events)
 - Cards with an interactive 3D tilt effect + dynamic glare
 - Long paragraph with word-by-word reveal on scroll
 
@@ -70,7 +70,7 @@ _Lighthouse 12, median of 3 runs per profile (September 2026)._
 - Real hover-capability detection (`hover: hover` + `pointer: fine`) instead of a width breakpoint, so the experience doesn't break on touch tablets
 
 **Reviews**
-- Google Reviews summary (4.9/5, +203 reviews)
+- Google Reviews summary (4.9/5, +223 reviews)
 - Bidirectional double infinite marquee with pause on-hover
 - Manual pause/resume button
 - 12 real hardcoded reviews (no external widget)

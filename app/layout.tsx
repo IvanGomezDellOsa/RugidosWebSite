@@ -54,7 +54,7 @@ const localBusinessJsonLd = {
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '4.9',
-    reviewCount: '203',
+    reviewCount: '223',
   },
 }
 

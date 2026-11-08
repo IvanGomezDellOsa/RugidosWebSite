@@ -105,7 +105,7 @@ export function WhyChooseUs() {
             <TiltCard className="h-full">
               <div className="border-gradient p-10 rounded-2xl h-full">
                 <AnimatedCounter
-                  value={7500}
+                  value={8500}
                   prefix="+"
                   className="text-6xl md:text-7xl lg:text-8xl"
                   label="eventos realizados"
