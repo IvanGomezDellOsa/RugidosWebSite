@@ -31,10 +31,8 @@ export function MagneticButton({ children, className = '', strength = 0.3 }: Mag
     setPosition({ x: 0, y: 0 })
   }
 
-  if (!isDesktop) {
-    return <div className={className}>{children}</div>
-  }
-
+  // Siempre motion.div (en mobile queda quieto): cambiar de <div> a
+  // <motion.div> tras la hidratación remontaba a children.
   return (
     <motion.div
       ref={ref}

@@ -35,9 +35,9 @@ export function Navbar() {
             ? 'py-3 glass-strong' 
             : 'py-6 bg-transparent'
         }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+        // Sin animación de entrada: el header se renderiza visible desde el
+        // HTML del servidor, en vez de quedar fuera de pantalla hasta hidratar.
+        initial={false}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
